@@ -1,45 +1,26 @@
-/* Var, Let y Const */ 
+/* Métodos disponibles para 'Strings' en 'JavaScript' */ 
 
-/* Declaraciones con VAR */
-var edad;
+let tecnologia = 'JavaScript', 
+    mensaje    = "Aprendiendo JavaScript, CSS, HTML para ser un Frontend";
 
-console .group( 'Declaraciones tipo VAR' );
-    var nombre = 'Juan';                    // Asignar valor
-    console .log( 'nombre ', nombre );      // nombre  Juan
-    var nombre = "Juanita";                 // Redeclarar la variable
-    console .log( 'nombre ', nombre );      // nombre  Juanita
-    nombre = 'Juliana';                     // Reasignar valor
-    console .log( 'nombre ', nombre );      // nombre  Juliana
-    
-    console .log( 'edad ', edad );          // edad undefined
-console .groupEnd();
-
-/* Formas de nombrar variables 
-
-var primerNombre;       // Camel Case
-var primer_nombre;      // Underscore
-var PrimerNombre;       // Pascal Case
-var primernombre;       // NO RECOMENDADO
-*/
-
-/* Declaraciones con LET (Con Ambito) */
-let primerNombre = 'Carlos',
-    tituloLibro = 'Aprenda JavaScript en 100 lecciones';
-
-console .group( 'Declaraciones tipo LET' );
-    console .log( primerNombre + ' lee "' + tituloLibro + '"' );    
-    console .log( `${ primerNombre } lee "${ tituloLibro }"` );  // Usando 'Template Literals'
-console .groupEnd();
-//let primerNombre = 'Alejandro';     // ERROR: 'let' no permite redeclarar una variable como lo permite 'var'
-
-
-/* Declaraciones con CONST (Constante) */
-const producto = 'Libro';
-
-/* Es un ERROR hacer lo siguiente 
-const producto;
-producto = 'Libro';
-*/
-console .group( 'Declaraciones tipo CONST' );
-    console .log( 'producto', producto );
-console .groupEnd();
+console .group( 'Métodos disponibles para "Strings"' ); 
+    console .group( 'Aplicado a la variable "tecnologia"' ); 
+        console .log( 'concat()', tecnologia .concat( ' ', 'es genial!' ) );                // JavaScript es genial!
+        console .log( 'toUpperCase()', tecnologia .toUpperCase() );                         // JAVASCRIPT
+        console .log( 'toLowerCase()', tecnologia .toLowerCase() );                         // javascript
+        console .log( 'repeat( 10 )', tecnologia .repeat( 10 ) );                          // Repite 10 veces "JavaScript"
+    console .groupEnd();
+    console .group( 'Aplicado a la variable "mensaje"' );
+        console .log( 'indexOf( "JavaScript" ) ', mensaje .indexOf( 'JavaScript' ) );       // 12
+        console .log( 'indexOf( "PHP" ) ', mensaje .indexOf( 'PHP' ) );                     // -1
+        console .log( 'substring( 0, 11 ) ', mensaje .substring( 0, 11 ) );                 // Aprendiendo                                              
+        console .log( 'substring( 3, 21 ) ', mensaje .substring( 3, 21 ) );                 // endiendo JavaScrip
+        console .log( 'slice( 3, 21 ) ', mensaje .slice( 3, 21 ) );                         // endiendo JavaScrip (Similar a substring)
+        console .log( 'slice( -3 ) ', mensaje .slice( -3 ) );                               // end (de derecha a izquierda)
+        console .log( 'slice( -30 ) ', mensaje .slice( -30 ) );                             // CSS, HTML para ser un Frontend (de derecha a izquierda)
+        console .log( 'split( " " ) ', mensaje .split( ' ' ) );                             // [ "Aprendiendo", "JavaScript,", "CSS,", "HTML", "para", "ser", "un", "Frontend" ]           
+        console .log( 'split( " " ) ', mensaje .split( ',' ) );                             // [ "Aprendiendo JavaScript", " CSS", " HTML para ser un Frontend" ]
+        console .log( 'replace( "HTML", "PHP" )', mensaje .replace( 'HTML', 'PHP' ) );      // Aprendiendo JavaScript, CSS, PHP para ser un Frontend        
+        console .log( 'includes( "CSS" )', mensaje .includes( 'CSS' ) );                    // true (Si el texto 'CSS' esta incluido en el 'String')
+    console .groupEnd();
+console .groupEnd();    
