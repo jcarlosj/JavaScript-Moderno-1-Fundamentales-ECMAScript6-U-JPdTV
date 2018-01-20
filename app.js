@@ -1,59 +1,20 @@
-const numero1 = "50",
-      numero2 = 10,
-      numero3 = 'tres';
 let dato;
 
-/* Convertir Strings a Numbers en 'JavaScript' */ 
-console .group( 'Convierte "String" a un "Number"' );
-    console .log( `"${ numero1 }" + ${ numero2 } `, numero1 + numero2 );                        // 5010 (El + es para concatenar cuando detecta un "String" o sumar)
-    console .log( `"${ numero1 }" - ${ numero2 } `, numero1 - numero2 );                        // 40   (La resta si la ejecuta)
-    console .log( `Number("${ numero1 }") + ${ numero2 } `, Number( numero1 ) + numero2 );      // 60
+/* Función 'toFixed' en 'JavaScript' */ 
+console .group( 'dato.toFixed()' );
     
-    /* Usando parseInt */
-    console .group( 'parseInt (Enteros)' );
-        console .log( `parseInt("${ numero1 }") + ${ numero2 } `, parseInt( numero1 ) + numero2 );  // 60
-        console .log( `parseInt("${ numero3 }") `, parseInt( numero3 ) );                           // NaN
-        
-        dato = parseInt( "100" );
-        console .log( 'parseInt("100")', dato );   // 100
-        dato = parseInt( "100.2030" );
-        console .log( 'parseInt("100.2030")', dato );   // 100
-    console .groupEnd();
-
-    /* Usando parseFloat (Decimales o punto coma flotante) */
-    console .group( 'parseFloat (Décimales)' );
-        dato = parseFloat( "100" );
-        console .log( 'parseFloat("100")', dato );   // 100
-        dato = parseFloat( "100.2030" );
-        console .log( 'parseFloat("100.2030")', dato );   // 100.203
-    console .groupEnd();
-
-    dato = Number( "20" );
-    console .log( 'dato = Number("20")', dato );            // 20
-    dato = Number( "20.12309" );
-    console .log( 'dato = Number("20.12309")', dato );      // 20.12309
-    dato = Number( "Hola Mundo!" );
-    console .log( 'dato = Number("Hola Mundo!")', dato );   // NaN
-console .groupEnd();
-
-/* Convertir Boolean a Numbers en 'JavaScript' */ 
-console .group( 'Convierte "Boolean" a un "Number"' );    
-    dato = Number( true );
-    console .log( 'dato = Number(true)', dato );            // 1
-    dato = Number( false );
-    console .log( 'dato = Number(false)', dato );           // 0
-console .groupEnd();
-
-/* Convertir Null/Undefined a Numbers en 'JavaScript' */ 
-console .group( 'Convierte "null e undefined" a un "Number"' );
-    dato = Number( null );
-    console .log( 'dato = Number(null)', dato );            // 0
-    dato = Number( undefined );
-    console .log( 'dato = Number(undefined)', dato );       // NaN
-console .groupEnd();
-
-/* Convertir 'Array' a Numbers en 'JavaScript' */ 
-console .group( 'Convierte "Array" a un "Number"' );
-dato = Number( [ 1, 2 ,3 ,4 ] );
-console .log( 'dato = Number([ 1, 2 ,3 ,4 ])', dato );      // NaN         // 0
+    /* Función que solo aplica a números */
+    dato = '932743254';
+    //console .log( 'dato.toFixed()', dato .toFixed() );      // ERROR: toFixed no es una función para Strings
+    console .log( 'dato = "932743254" \nparseInt(dato).toFixed(2)', parseInt( dato ) .toFixed( 2 ) );       // 932743254.00
+    dato = '932743254.734125602';
+    console .log( 'dato = "932743254" \nparseFloat(dato).toFixed(3)', parseFloat( dato ) .toFixed( 3 ) );   // 932743254.00
+    dato = 932743254;
+    console .log( 'dato = 932743254 \ndato .toFixed()', dato .toFixed() );                 // 0932743254 
+    dato = 932743254;
+    console .log( 'dato = 932743254 \ndato .toFixed(6)', dato .toFixed( 6 ) );             // 0932743254.000000 
+    dato = 932743254.343589342;
+    console .log( 'dato = 932743254.343589342 \ndato .toFixed() ', dato .toFixed() );      // 0932743254 
+    dato = 932743254.343589342;
+    console .log( 'dato = 932743254.343589342 \ndato .toFixed(3) ', dato .toFixed( 3 ) );  // 0932743254.343 
 console .groupEnd();
