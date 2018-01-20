@@ -1,77 +1,35 @@
-/* Convertir de un Number a un String en JavaScript */
+/* Template Literals en JavaScript */
 
-let codigoPostal, dato;
+const producto1 = 'Pizza',
+      precio1 = 30,
+      producto2 = 'Hamburguesa',
+      precio2 = 40;
+let html;
 
-console .group( 'Convertir de un Number a un String' );
-    codigoPostal = 90210;
-    console .log( 'codigoPostal.length ', codigoPostal .length );            // undefined (Por que length es un método exclusivo para las cadenas de texto o Strings)
+/* Forma tradicional */
+html = '<h1> Pedido (Tradicional)</h1>' +
+        '<ul>' +
+        '<li>' + producto1 + ' $ ' + precio1 + '</li>' + 
+        '<li>' + producto2 + ' $ ' + precio2 + '</li>' + 
+        '<li><b>Total:</b> ' + (precio1 + precio2)+ '</li>' + 
+       '</ul>';
+console .log( 'Tradicional ', html );
+document .getElementById( 'app' ) .innerHTML = html;
 
-    // Convierte a String
-    codigoPostal = String( codigoPostal );      
-    console .log( 'String(codigoPostal).length ', codigoPostal .length );   // 5 
-    console .log( '( "4" + "4" ).length ', ( "4" + "4" ) .length );         // 2  
+/* Usando Template Literals */
+html = `
+    <h1> Pedido (Template Literals)</h1>
+    <ul>
+        <li> ${ producto1 } $  ${ precio1 } </li> 
+        <li> ${ producto2 } $  ${ precio2 } </li> 
+        <li><b>Total:</b>  ${ total( precio1, precio2 ) } </li> 
+    </ul>
+`;
 
-    /* Array a String */    
-    dato = String( [ 1, 2, 3 ] );
-    console .log( 'String ([ 1, 2, 3 ]) ', dato );                     // 1,2,3
-    console .log( '(String ([ 1, 2, 3 ])).length ', dato .length );    // 5
-    console .log( 'typeof String ([ 1, 2, 3 ]) ', typeof dato );       // string
+/* Los Template Literals pueden hacer uso de las funciones */
+function total( valor1, valor2 ) {
+    return valor1 + valor2;
+}
 
-    /* Convertir a String usando la función 'toString' */
-    console .group( 'toString' );
-        
-        /* Entero a String */
-        console .group( 'dato = 20' );
-            dato = 20;
-            dato = dato .toString();                        // Convierte a String
-            console .log( 'dato ', dato );                  // 20
-            console .log( 'dato.length ', dato .length );   // 2
-            console .log( 'typeof dato ', typeof dato );    // string
-        console .groupEnd();
-    
-        /* Booleano a String */
-        console .group( 'dato = true' );
-            dato = true;
-            dato = dato .toString();                        // Convierte a String
-            console .log( 'dato ', dato );                  // true
-            console .log( 'dato.length ', dato .length );   // 4
-            console .log( 'typeof dato ', typeof dato );    // string
-        console .groupEnd();   
-    
-        /* Array a String */
-        console .group( 'dato = [ 1, 2, 3 ]' );
-            dato = [ 1, 2, 3 ];
-            dato = dato .toString();                        // Convierte a String
-            console .log( 'dato ', dato );                  // true
-            console .log( 'dato.length ', dato .length );   // 4
-            console .log( 'typeof dato ', typeof dato );    // string
-        console .groupEnd();   
-
-    console .groupEnd();
-console .groupEnd();
-
-/* Convertir de un Boolean a un String en JavaScript */
-console .group( 'Convertir de un Boolean a un String' );
-    
-    /* Con dato booleano = true */
-    console .group( 'dato = true' );
-        dato = true;
-        // Convierte a String
-        dato = String( dato );
-        console .log( 'String (true) ', dato );                     // true
-        console .log( '(String (true)).length ', dato .length );    // 4
-        console .log( 'typeof String (true) ', typeof dato );       // string
-    console .groupEnd();
-
-    /* Con dato booleano = false */
-    console .group( 'dato = false' );
-        dato = false;
-        // Convierte a String
-        dato = String( dato );
-        console .log( 'String (true) ', dato );                     // true
-        console .log( '(String (true)).length ', dato .length );    // 5
-        console .log( 'typeof String (true) ', typeof dato );       // string
-    console .groupEnd();    
-console .groupEnd();
-
-/* NOTA: null e undefined no se pueden convertir a String */
+console .log( 'Tradicional ', html );
+document .getElementById( 'app2' ) .innerHTML = html;
