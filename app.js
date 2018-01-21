@@ -1,49 +1,34 @@
-/* Objetos en JavaScript */
+/* Array de Objetos en JavaScript */
 
-/* Creación de un Objeto */ 
-const persona = {
-    nombre: 'Miguel',
-    apellido: 'Rodríguez',
-    profesion: 'Diseñador Gráfico',
-    email: 'miguel@correo.co',
-    edad: 20,
-    /* Array */
-    aplicaciones: [ 'Photoshop', 'Ilustrator', 'Premier' ],
-    /* Objeto */ 
-    hogar: {
-        ciudad: 'Medellín',
-        pais: 'Colombia'
-    },
-    /* Función */
-    nacimiento: function () {
-        return new Date() .getFullYear() - this .edad; 
+const moviles = [
+    { modelo: 'S3' , marca: 'Samsung', color: 'blanco' },
+    { modelo: 'S4' , marca: 'Samsung', color: 'negro' },
+    { modelo: 'iPhone6' , marca: 'Apple', color: 'blanco' },
+    { modelo: 'G5' , marca: 'Motorola', color: 'dorado' }
+];
+
+console .log ( moviles );
+console .log ( 'Cantiad de moviles ', moviles .length );
+console .log ( 'Modelo del movil de la posición 1 ', moviles[ 1 ] .modelo );
+
+console .group( 'Recorrer cada Objeto del Array' );
+    /* Recorrer usando un loop for */
+    for( let i = 0; i < moviles .length; i++ ) {
+        console .log( `${ moviles[ i ] .marca } - ${ moviles[ i ] .modelo }` );
     }
-}
-
-/* Despliega valores del Objeto */
-console .log( 'Objeto Persona ',  persona );
-
-console .group( 'nombre' );
-    console .log( 'Notación . ', persona .nombre );
-    console .log( 'Notación [] ', persona[ 'nombre' ] );
 console .groupEnd();
 
-console .log( persona .profesion );
+/* El Array de Objetos no puede ser cambiado por otro pues fue definido como 
+   constante (const), pero sus valores internos si 
+   
+moviles = [
+    { modelo: 'S8' , marca: 'Samsung', color: 'blanco' },
+    { modelo: 'Zend 2' , marca: 'Asus', color: 'negro' }
+];
+*/
 
-console .group( 'Array dentro del Objeto' );
-    console .log( 'Todo el Array ', persona .aplicaciones );
-    persona .aplicaciones .push( 'Dreamweaver' );
-    console .log( 'Inserta un elemento ', persona .aplicaciones );
-    console .log( 'Muestra un elemento especifico ', persona .aplicaciones[ 1 ] );
-console .groupEnd();
-
-console .group( 'Objeto dentro de Objeto' );
-    console .log( 'Objeto dentro del objeto ', persona .hogar );
-    console .log( 'Notación . ', persona .hogar .ciudad );
-    console .log( 'Notación . y [] ', persona .hogar[ 'ciudad' ] );
-    console .log( 'Doble notación [][] ', persona [ 'hogar' ][ 'ciudad' ] );
-console .groupEnd()
-
-console .group( 'Función dentro de Objeto' );
-    console .log( 'nacimiento', persona .nacimiento() );
-console .groupEnd()
+moviles[ 0 ] .modelo = 'Zend 3';
+moviles[ 0 ] .marca = 'Asus';
+moviles[ 0 ] .color = 'Negro';
+   
+console .log ( moviles );
