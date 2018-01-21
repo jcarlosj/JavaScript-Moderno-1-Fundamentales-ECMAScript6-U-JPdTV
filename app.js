@@ -1,39 +1,49 @@
-/* Variable const en objetos y arreglos */
+/* Objetos en JavaScript */
 
-/* const en Arrays */
-const numeros = [ 1, 2, 3, 4 ];
-
-//numeros = [ 7, 8, 9, 0 ];     /* El arreglo completo no puede ser reasignado a no ser que sea un 'let' o un 'var' */ 
-
-numeros[ 0 ] = 5;               /* Sus valores individuales sí */
-numeros .push( 6 );             /* O agregar nuevos valores individuales */ 
-
-console .log( 'Array ', numeros );
-
-/* const en Objetos */
-const Persona = {
-    nombre: 'Juan',
-    colorOjos: 'Marrones',
-    colorPiel: 'Blanca',
-    estatura: 1.67,
-    genero: 'Masculino',
-    edad: 40
+/* Creación de un Objeto */ 
+const persona = {
+    nombre: 'Miguel',
+    apellido: 'Rodríguez',
+    profesion: 'Diseñador Gráfico',
+    email: 'miguel@correo.co',
+    edad: 20,
+    /* Array */
+    aplicaciones: [ 'Photoshop', 'Ilustrator', 'Premier' ],
+    /* Objeto */ 
+    hogar: {
+        ciudad: 'Medellín',
+        pais: 'Colombia'
+    },
+    /* Función */
+    nacimiento: function () {
+        return new Date() .getFullYear() - this .edad; 
+    }
 }
 
-/* El objeto completo no puede ser reasignado a no ser que sea un 'let' o un 'var'  
-Persona = {
-    nombre: 'María',
-    colorOjos: 'Negros',
-    colorPiel: 'Blanca',
-    estatura: 1.69,
-    genero: 'Femenino',
-    edad: 40
-}
-*/
+/* Despliega valores del Objeto */
+console .log( 'Objeto Persona ',  persona );
 
-Persona .nombre = 'Maria';
-Persona .genero = 'Femenino';
-Persona .estatura = 1.69;
-Persona .colorOjos = 'Negros';
+console .group( 'nombre' );
+    console .log( 'Notación . ', persona .nombre );
+    console .log( 'Notación [] ', persona[ 'nombre' ] );
+console .groupEnd();
 
-console .log( 'Objeto ', Persona );
+console .log( persona .profesion );
+
+console .group( 'Array dentro del Objeto' );
+    console .log( 'Todo el Array ', persona .aplicaciones );
+    persona .aplicaciones .push( 'Dreamweaver' );
+    console .log( 'Inserta un elemento ', persona .aplicaciones );
+    console .log( 'Muestra un elemento especifico ', persona .aplicaciones[ 1 ] );
+console .groupEnd();
+
+console .group( 'Objeto dentro de Objeto' );
+    console .log( 'Objeto dentro del objeto ', persona .hogar );
+    console .log( 'Notación . ', persona .hogar .ciudad );
+    console .log( 'Notación . y [] ', persona .hogar[ 'ciudad' ] );
+    console .log( 'Doble notación [][] ', persona [ 'hogar' ][ 'ciudad' ] );
+console .groupEnd()
+
+console .group( 'Función dentro de Objeto' );
+    console .log( 'nacimiento', persona .nacimiento() );
+console .groupEnd()
