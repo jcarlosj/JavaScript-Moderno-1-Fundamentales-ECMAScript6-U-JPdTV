@@ -1,34 +1,26 @@
-/* Funciones Propias en JavaScript */
+/* Funciones Propias creando Parámetros con valores por 'Default' en JavaScript */
 
-/* Se define funcion (Sin Argumentos) */
-function saludar() {
-    console .log( 'Hola ');
-}
-/* Realizamos el llamado */
-saludar();
-saludar();
-
-/* Se define funcion (Con Argumentos) */
+/* Forma 1: */ 
 function saludarA( nombre ) {
+    /* Crear valor por defecto para un parámetro */
+    if( typeof nombre === 'undefined' ) {
+        nombre = 'Fulanito de Tal';
+    }
     console .log( `Hola ${ nombre }`);
 }
 /* Realizamos el llamado */
 saludarA( 'Maria' );
 saludarA( 'José' );
 saludarA( 'Jorge' );
+saludarA();
 
-/* Se define funcion (Con Argumentos que imprime valores) */
-function sumar1( numeroA, numeroB ) {
-    console .log( 'sumar1 ', numeroA + numeroB );
+
+/* Forma 2: */ 
+function saluda( nombre = 'Perencejo' ) {       /* Crear valor por defecto para un parámetro */   
+    console .log( `Hola ${ nombre }`);
 }
 /* Realizamos el llamado */
-sumar1( 13, 9 );
-sumar1( 0, -1 );
-
-/* Se define funcion (Con Argumentos que retorna valores) */
-function sumar2( numeroA, numeroB ) {
-    return numeroA + numeroB;
-}
-/* Realizamos el llamado */
-console .log( 'sumar2 ', sumar2( 2, 3 ) );
-console .log( 'sumar2 ', sumar2( 10, 4 ) );
+saluda( 'Elisa' );
+saluda( 'Juliana' );
+saluda( 'Laura' );
+saluda();
