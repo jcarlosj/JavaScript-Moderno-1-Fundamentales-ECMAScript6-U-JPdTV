@@ -1,51 +1,48 @@
-/* Estructuras de control en JavaScript (If/ElseIf) */
+/* Operadores AND y OR en las estructuras de control en JavaScript (If/ElseIf) */
 
-/* Ejemplo 1 */ 
-let hora = 20;
+/* Operador && (AND) */
+let edadAdmitida = 13,
+    generoAdmitido = 'masculino';
 
-/* Forma 1 */
-if( hora > 0 && hora < 12 ) {
-    console .log( 'Buenos días!' );
+if( edadAdmitida >= 18 && generoAdmitido == 'masculino' ) {
+    console .log( 'Debe prestar servicio militar, Bienvenido!' );
+}
+else if( generoAdmitido == 'masculino' ) {
+    console .log( 'Debe esperar a cumplir la mayoría de edad' );
 }
 else {
-    if( hora < 19 ) {
-        console .log( 'Buenas tardes!' );
-    }
-    else{
-        console .log( 'Buenos noches!' );
-    }
+    console .log( 'Las chicas no prestan servicio militar en Colombia!' );
+}
+
+/* Operador || (OR) */
+let efectivo = 300,
+    credito = 300,
+    disponible = efectivo + credito;
+    totalCarrito = 500;
+
+/* Forma 1 */    
+if ( totalCarrito < efectivo || totalCarrito < credito ) {
+    console .log( 'Puede pagar' );
+}    
+else {
+    console .log( 'No puede pagar' );
 }
 
 /* Forma 2 */
-hora = 13;
-
-if( hora > 0 && hora < 12 ) {
-    console .log( 'Buenos días!' );
+if ( totalCarrito < efectivo || totalCarrito < credito ) {
+    console .log( 'Puede pagar' );
+}    
+else if( totalCarrito < disponible ) {
+    console .log( 'Puede pagar (crédito + efectivo)' );
 }
-else if( hora < 19 ) {
-    console .log( 'Buenas tardes!' );
-}
-else{
-    console .log( 'Buenos noches!' );
+else {
+    console .log( 'No puede pagar' );
 }
 
 /* Forma 3 */
-hora = 90;
-
-if( hora < 0 ) {
-    console .log( `No existen las ${ hora } horas` );
-}
-else if( hora < 12 ) {
-    console .log( 'Buenos días!' );
-}
-else if( hora < 19 ) {
-    console .log( 'Buenas tardes!' );
-}
-else if( hora < 24 ) {
-    console .log( 'Buenas noches!' );
-}
+if ( totalCarrito < efectivo || totalCarrito < credito || totalCarrito < disponible ) {
+    console .log( 'Puede pagar' );
+}    
 else {
-    console .log( `No existen las ${ hora } horas` );
+    console .log( 'No puede pagar' );
 }
-
-
