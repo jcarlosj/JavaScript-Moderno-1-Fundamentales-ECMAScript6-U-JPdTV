@@ -1,33 +1,17 @@
-/* Iteraciones (Foreach Loop) */
-const tareas = [
-    'Comer Cliente nuevo Proyecto',
-    'Viajar a Medellin',
-    'Estudiar Angular',
-    'Trabajar Proyecto WordPress',
-    'Investigar Despliegue en AWS'
+/* Iteraciones (Map Loop) */
+const carritoCompras = [
+    { id: 1, producto: 'Libro', valor: 90000, nombre: 'Aprenda JavaScript' },
+    { id: 2, producto: 'Periódico', valor: 3500, nombre: 'El Tiempo' },
+    { id: 3, producto: 'Revista', valor: 14700, nombre: 'Muy Linux' },
+    { id: 4, producto: 'Zapatillas', valor: 260700, nombre: 'Adidas' }
 ];
-console .log( tareas );
 
-/* Forma 1: Usando FOR */
-console .group( 'Usando FOR' );
-    for( let i = 0; i < tareas .length; i++ ) {
-        console .log( tareas[ i ] );
-    }
-console .groupEnd();
+console .group( 'Map Loop' );
 
-/* Forma 2: Usando WHILE */
-let i = 0;
-
-console .group( 'Usando WHILE' );
-    while( i < tareas .length ) {
-        console .log( tareas[ i ] );
-        i++;
-    }
-console .groupEnd();
-
-/* Forma 3: Usando FOREACH */
-console .group( 'Usando FOREACH' );
-    tareas .forEach( function( tareas, index ) {
-       console .log( `${ index } : ${ tareas }` ); 
+    const nombreProducto = carritoCompras .map( function( carrito ) {
+        return carrito .producto;
     });
+
+    console .log( nombreProducto );
+
 console .groupEnd();
