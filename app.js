@@ -1,41 +1,51 @@
-/* Estructuras de control en JavaScript (If/Else) */
+/* Estructuras de control en JavaScript (If/ElseIf) */
 
 /* Ejemplo 1 */ 
-const edad = 17;
+let hora = 20;
 
-if( edad >= 18 ) {
-    console .log( 'Eres mayor de edad puedes entrar al sitio' );
+/* Forma 1 */
+if( hora > 0 && hora < 12 ) {
+    console .log( 'Buenos días!' );
 }
 else {
-    console .log( 'Eres menor de edad NO puedes entrar al sitio' );
-}
-
-/* Ejemplo 2: Comprobar que una variable tiene un valor X */ 
-let puntaje;
-
-/* Forma 1 */ 
-if( puntaje ) {
-    console .log( `El puntaje fue de ${ puntaje }` );
-}
-else {
-    console .log( `No hay puntaje`);
+    if( hora < 19 ) {
+        console .log( 'Buenas tardes!' );
+    }
+    else{
+        console .log( 'Buenos noches!' );
+    }
 }
 
 /* Forma 2 */
-if( typeof puntaje != 'undefined' ) {
-    console .log( `El puntaje fue de ${ puntaje }` );
+hora = 13;
+
+if( hora > 0 && hora < 12 ) {
+    console .log( 'Buenos días!' );
 }
-else {
-    console .log( `No hay puntaje`);
+else if( hora < 19 ) {
+    console .log( 'Buenas tardes!' );
+}
+else{
+    console .log( 'Buenos noches!' );
 }
 
-/* Ejemplo 3: Comprobar dos valores */
-let efectivo = 500,
-    totalCarrito = 300;
+/* Forma 3 */
+hora = 90;
 
-if( efectivo > totalCarrito ) {
-    console .log( 'Pago correcto' );
+if( hora < 0 ) {
+    console .log( `No existen las ${ hora } horas` );
+}
+else if( hora < 12 ) {
+    console .log( 'Buenos días!' );
+}
+else if( hora < 19 ) {
+    console .log( 'Buenas tardes!' );
+}
+else if( hora < 24 ) {
+    console .log( 'Buenas noches!' );
 }
 else {
-    console .log( 'Fondos insuficientes!' );
-}    
+    console .log( `No existen las ${ hora } horas` );
+}
+
+
