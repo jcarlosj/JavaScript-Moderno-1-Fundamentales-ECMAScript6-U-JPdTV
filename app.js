@@ -9,7 +9,7 @@ console .group( 'Fechas en JavaScript' );
     console .log( 'Fecha actual ', diaHoy );
     
     /* Fecha específica: Mes, Dia y Año */
-    let navidad_2017 = new Date( '12-25-2017' );
+    let navidad_2017 = new Date( '2017-12-25' );
     console .log( 'Fecha Navidad 2017 ', navidad_2017 );
 
     /* Obtener Fechas */
