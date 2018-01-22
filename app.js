@@ -1,65 +1,72 @@
-/* Estructuras de control en JavaScript (switch) */
+/* Iteraciones (For Loops) */
 
 /* Ejemplo 1 */
-const metodoPago = 'bitcoin';
-
-switch ( metodoPago ) {
-    case 'efectivo':
-        console .log( `El usuario pago en ${ metodoPago }` );
-        break;
-    case 'cheque':
-        console .log( `El usuario pago con ${ metodoPago }` );
-        break;    
-    case 'debito':
-        console .log( `El usuario pago con tarjeta ${ metodoPago }` );
-        break;  
-    case 'credito':
-        console .log( `El usuario pago con tarjeta ${ metodoPago }` );
-        break;   
-    default: 
-        console .log( `${ metodoPago } método de pago no soportado.` );         
-}
+console .group( 'Incremento 0 a 9' );
+    for( let i = 0; i < 10; i++ ) {
+        console .log( `Número: ${ i }`);
+    }
+console .groupEnd();
 
 /* Ejemplo 2 */
-let mes;
+const desde = 3,
+      hasta = 8;
 
-switch( new Date() .getMonth() ) {
-    case 0:
-        mes = 'Enero';
-        break;
-    case 1:
-        mes = 'Febrero';
-        break;
-    case 2:
-        mes = 'Marzo';
-        break;
-    case 3:
-        mes = 'Abril';
-        break;
-    case 4:
-        mes = 'Mayo';
-        break;
-    case 5:
-        mes = 'Junio';
-        break;
-    case 6:
-        mes = 'Julio';
-        break;
-    case 7:
-        mes = 'Agosto';
-        break;
-    case 8:
-        mes = 'Septiembre';
-        break;
-    case 9:
-        mes = 'Octubre';
-        break;
-    case 10:
-        mes = 'Noviembre';
-        break;
-    case 11:
-        mes = 'Diciembre';
-        break;                
-}
+nombres = [
+    'Ana',
+    'José',
+    'María',
+    'Eva',
+    'Carlos',
+    'Luisa',
+    'Juan',
+    'Elisa',
+    'Sofía'
+];
 
-console .log( `Mes actual: ${ mes }` );
+console .group( 'Nombres' );
+    for( let i = desde; i < hasta; i++ ) {
+        console .log( `${ nombres[ i ] }`);
+    }
+console .groupEnd();
+
+/* Ejemplo 3 */
+console .groupEnd();
+    for( let i = 9; i >= 0; i-- ) {
+        if( i == 5 ) {
+            console .log( 'Voy en el Cinco' );
+            continue;       /* Se detiene y continua el ciclo sin ejecutar las lineas hasta el final del for */ 
+        } 
+        console .log( `#: ${ i }`);
+    }
+console .groupEnd();
+
+/* Ejemplo 4 */
+
+console .group( 'Pares e impares' );
+    for( let i = 0; i < 10; i++ ) {
+        if( i % 2 == 0 ) {
+            console .log( `${ i } es par` );
+        }
+        else {
+            console .log( `${ i } es impar` );
+        }
+    }
+console .groupEnd();
+
+/* Ejemplo 5 */
+const arregloProductos = [ 
+    'Camisa',
+    'Boleto',
+    'Guitarra',
+    'Disco',
+    'Reloj'
+];
+
+console .group( 'Productos' );
+    for( let i = 0; i < arregloProductos .length; i++ ) {
+        console .log( `Producto ${ arregloProductos[ i ] } fue agregado`);
+        //if( i % 2 == 0 ) {}
+    }
+console .groupEnd();
+
+
