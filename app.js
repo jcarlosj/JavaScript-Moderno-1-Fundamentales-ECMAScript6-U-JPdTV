@@ -1,17 +1,21 @@
-/* Iteraciones (Map Loop) */
-const carritoCompras = [
-    { id: 1, producto: 'Libro', valor: 90000, nombre: 'Aprenda JavaScript' },
-    { id: 2, producto: 'Periódico', valor: 3500, nombre: 'El Tiempo' },
-    { id: 3, producto: 'Revista', valor: 14700, nombre: 'Muy Linux' },
-    { id: 4, producto: 'Zapatillas', valor: 260700, nombre: 'Adidas' }
-];
+/* Iterar Objeto usando un FOR...IN Loop */
+const Persona = {
+    nombre: 'Radamel Falcao García Zárate',
+    profesion: 'Jugador de Fútbol Soccer',
+    apodo: 'El Tigre',
+    estatura: 1.77,
+    nacimiento: '10 de febrero de 1986',
+    lugarNacimiento: 'Santa Marta, Colombia',
+    equipoActual: 'Mónaco',
+    posicion: 'Delantero',
+    numeroCamiseta: 9
+    
+}
 
-console .group( 'Map Loop' );
+console .log( Persona );
 
-    const nombreProducto = carritoCompras .map( function( carrito ) {
-        return carrito .producto;
-    });
-
-    console .log( nombreProducto );
-
+console .group( 'For... in Loop' );
+    for( let dato in Persona ) {
+        console .log( `${ dato } : ${ Persona[ dato ] }` );
+    }
 console .groupEnd();
