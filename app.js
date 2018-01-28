@@ -1,25 +1,41 @@
-/* Herencia de Prototypes en JavaScript */
-function Cliente( nombre, saldo ) {
-    this .nombre = nombre;
-    this .saldo = saldo;
+/* Object Create en JavaScript (POO en ES5) */
+const Cliente = {
+    imprimirSaldo : function() {
+        return `Nombre: ${ this .nombre }, Saldo: ${ this .saldo }`;
+    },
+    retirarSaldo : function( retiro ) {
+        return this .saldo -= retiro;
+    }
 }
 
-function Empresa( nombre, saldo, telefono, tipo ) {
-    Cliente .call( this, nombre, saldo );       // ---> Hereda los atributos del objeto 'Cliente'
-    this .telefono = telefono;
-    this .tipoEmpresa = tipo;
+// Crear el Objeto usando 'Object Create'
+const mary = Object .create( Cliente );
+
+/*  Atributos  */
+mary .nombre = 'Sofia';
+mary .saldo = 900;
+
+/* Prototype (Método objeto Cliente) */
+mary .tipoCliente = function () {
+    let tipo;
+
+    if( this .saldo > 1000 ) {
+        tipo = 'gold';
+    }
+    else if( this .saldo > 500 ) {
+        tipo = 'platinum';
+    }
+    else {
+        tipo = 'normal';
+    }
+
+    return tipo;
 }
-Empresa .prototype = Object .create( Cliente .prototype .nombreClienteSaldo() );  // ---> Hereda el prototype (método) del objeto 'Cliente'
 
-// Prototype para el Objeto 'Cliente'
-Cliente .prototype .nombreClienteSaldo = function() {
-    return `Nombre: ${ this .nombre }, Saldo: ${ this .saldo }`;
-}
+console .log( mary );
 
-const cliente = new Cliente( 'Eva', 1100 );
-console .log( cliente );
-console .log( cliente .nombreClienteSaldo() );
+console .log( 'Retiro: 415, Saldo: ', mary .retirarSaldo( 415 ) );
+console .log( mary .imprimirSaldo() );
+console .log( 'Tipo Cliente', mary .tipoCliente() );
 
-const empresa = new Empresa( 'Empresa de Acueducto', 1000000, 978734312, 'Estatal' );
-console .log( empresa );
-console .log( empresa .nombreClienteSaldo() );
+/* NOTA: Es otra forma de crear un Objeto */
