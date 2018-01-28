@@ -1,60 +1,61 @@
-/* Crear 'String' usando constructores */
-const nombre1 = 'Jerónimo',                 // Forma corriente
-      nombre2 = new String( 'Juliana' );    // Como constructor
+/* Prototypes */
+function Cliente( nombre, saldo ) {
+    this .nombre = nombre;
+    this .saldo = saldo;
+    this .tipoCliente = function() {            // ---> Esta restringido. Solo está disponible para el Objeto 'Cliente'
+        let tipo;
 
-console .group( 'String' );
-    console .log( `${ nombre1 } es de tipo ${ typeof nombre1 }` );      // string
-    console .log( `${ nombre2 } es de tipo ${ typeof nombre2 }` );      // object
-console .groupEnd();
+        if( this .saldo > 1000 ) {
+            tipo = 'gold';
+        }
+        else if( this .saldo > 500 ) {
+            tipo = 'platinum';
+        }
+        else {
+            tipo = 'normal';
+        }
 
-/* Crear 'Number' usando constructores */
-const numero1 = 1,                  // Forma corriente
-      numero2 = new Number( 9 );    // Como constructor
-
-console .group( 'Number' );
-    console .log( `${ numero1 } es de tipo ${ typeof numero1 }` );      // number
-    console .log( `${ numero2 } es de tipo ${ typeof numero2 }` );      // object
-console .groupEnd();
-
-/* Crear 'Boolean' usando constructores */
-const boolean1 = false,                  // Forma corriente
-      boolean2 = new Boolean( true );    // Como constructor
-
-console .group( 'Boolean' );
-    console .log( `${ boolean1 } es de tipo ${ typeof boolean1 }` );      // boolean
-    console .log( `${ boolean2 } es de tipo ${ typeof boolean2 }` );      // object
-console .groupEnd();
-
-/* Crear un 'function' usando constructores */
-const funcion1 = function( numero1, numero2 ) {                         // Forma Corriente
-    return numero1 + numero2;
+        return tipo;
+    }
 }
-const funcion2 = new Function( 'numero1', 'numero2', 'return numero1 + numero2');   // Como constructor
 
-console .group( 'Function' );
-    console .log( `${ funcion1( 2, 3 ) } es de tipo ${ typeof funcion1() }` );      // object
-    console .log( `${ funcion2( 3, 3 ) } es de tipo ${ typeof funcion2() }` );      // object
-console .groupEnd();
+const cliente1 = new Cliente( 'Eva', 1100 ),
+      cliente2 = new Cliente( 'Sofia', 610 ),
+      cliente3 = new Cliente( 'Juan', 170 );
 
-/* Crear un 'object' usando constructores */
-const persona1 = {              // Forma corriente
-    nombre: 'Juan',
-    apellido: 'Jiménez'
+console .log( cliente1 );
+console .log( cliente2 );
+console .log( cliente3 );
+
+/* Crea Prototype 'retirarSaldo' */
+Cliente .prototype .retirarSaldo = function( retiro ) {   // ---> Este método es más flexible, agrega a las funcionalidades al Objeto 'Cliente'
+    if( this. saldo > retiro ) {
+        return this .saldo -= retiro;
+    }
+    else {
+        return false;
+    }
 }
-const persona2 = new Object({ nombre: 'Juan', apellido: 'Jiménez' });   // Como constructor
 
-console .group( 'Object' );
-    console .log( `${ persona1 } es de tipo ${ typeof persona1 }` );      // object
-    console .log( `${ persona2 } es de tipo ${ typeof persona2 }` );      // object
+/* Crea Prototype 'getSaldo' */
+Cliente .prototype .getSaldoCliente = function() {
+    return `Nombre: ${ this .nombre }, Tu saldo disponible es: ${ this .saldo}, Tipo cliente: ${ this .tipoCliente() } `;
+}
+
+/* Resultados */
+console .group( 'Cliente 1' );
+    console .log( cliente1 .getSaldoCliente() );
 console .groupEnd();
 
-/* Crear un 'array' usando constructores */
-const arreglo1 = [ 1, 2, 3, 4 ],                // Forma corriente
-      arreglo2 = new Array( 1, 2, 3, 4 );       // Como constructor
-
-console .group( 'Array' );
-    console .log( `${ arreglo1 } es de tipo ${ typeof arreglo1 }` );      // object
-    console .log( `${ arreglo2 } es de tipo ${ typeof arreglo2 }` );      // object
+console .group( 'Cliente 2' );
+    console .log( cliente2 .getSaldoCliente() );
+    console .log( 'Retiro: 615, Saldo: ', cliente2 .retirarSaldo( 615 ) );
 console .groupEnd();
 
-/* NOTA: Existen también expresiones regulares y otros */
+console .group( 'Cliente 3' );
+    console .log( cliente3 .getSaldoCliente() );
+    console .log( 'Retiro: 95, Saldo: ', cliente3 .retirarSaldo( 95 ) );
+console .groupEnd();
+
+
+
