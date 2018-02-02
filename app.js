@@ -1,59 +1,25 @@
-/* Clases en JavaScript (POO en ES6) */
-class Cliente {
-    constructor( nombre, saldo ) {
-        this .nombre = nombre;
-        this .saldo = saldo;
-    }
-    /* Prototypes */
-    imprimirSaldo() {
-        return `Nombre: ${ this .nombre }, Saldo: ${ this .saldo }`;
-    }
-    tipoCliente() {
-        let tipo;
+/* CallBacks en JavaScript
+ * Es una Función donde se ejecuta una función (forEach es un ejemplo de CallBack) 
+ */
 
-        if( this .saldo > 10000 ) {
-            tipo = 'gold';
-        }
-        else if( this .saldo > 5000 ) {
-            tipo = 'platinum';
-        }
-        else {
-            tipo = 'normal';
-        }
+const ciudades = [ 'Bogotá', 'Santiago de Cali', 'Medellín', 'Cartagena', 'Manizales' ]; 
 
-        return tipo;
-    }
-    retirarSaldo( retiro ) {
-        return this .saldo -= retiro;
-    }
-    static bienvenida() {                               // ---> Prototype estático
-        return `Bienvenido al cajero.`;
-    }
-    
-}
+console .group( 'Callback inline (forEach)' );
 
-/* Clase Empresa hereda de la clase Cliente */
-class Empresa extends Cliente {
-    constructor( nombre, saldo, telefono, tipo ) {
-        super( nombre, saldo );            // ---> Llama al constructor padre 'Cliente' hereda los atributos
-        this .telefono = telefono;
-        this .tipo = tipo;
-    }
-    static bienvenida() {                               // ---> Prototype estático
-        return `Bienvenido al cajero banca empresarial.`;
-    }
-}
+    // Es conocida como Inline Callback, ya que es una función anónima (Es la forma recomendada)
+    ciudades .forEach( function( ciudad ) {
+        console .log( '-', ciudad );
+    }); 
 
-/* Para Instanciar un Cliente */
-const maria = new Cliente( 'Maria', 10000 );
-console .log( Cliente .bienvenida() );                  // ---> Los métodos (o prototypes) estáticos no requieren ser instanciados
-console .log( 'Tipo Cliente: ', maria .tipoCliente() );
-console .log( '> ', maria .imprimirSaldo() );
-console .log( 'Retira: 3000, Saldo ', maria .retirarSaldo( 7000 ) );
+console .groupEnd();
 
-/* Para Instanciar una Empresa */
-const empresa = new Empresa( 'Empresa de Teléfonos', 9560923, 2115694, 'Telecomunicaciones' );
-console .log( Empresa .bienvenida() );                  // ---> Los métodos (o prototypes) estáticos no requieren ser instanciados
-console .log( 'Tipo Cliente: ', empresa .tipoCliente() );
-console .log( '> ', empresa .imprimirSaldo() );
-console .log( 'Retira: 2735000, Saldo ', empresa .retirarSaldo( 2735000 ) );
+console .group( 'CallBack Definido (forEach)' );
+
+    // Es conocida como funciona definida, por que la función si tiene un nombre
+    function callback( ciudad ) {
+        console .log( '+', ciudad );
+    }
+    ciudades .forEach( callback );
+
+console .groupEnd();
+
