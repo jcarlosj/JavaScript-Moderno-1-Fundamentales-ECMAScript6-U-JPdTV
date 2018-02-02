@@ -1,38 +1,19 @@
-/* CallBacks en JavaScript
- * Es una Función donde se ejecuta una función (forEach es un ejemplo de CallBack) 
- */
+/* Promises en JavaScript */
 
-const paises = [ 'Colombia', 'México', 'Brasil', 'Argentina', 'Panamá', 'Canadá' ];
+// 'resolve' se ejecuta cuando la Promise se cumple (Parámetro 1)
+// 'reject' se ejecuta cuando la Promise NO se cumple (Parámetro 2)
 
-// Función que implementa otra función como parámetro, Muestra nuevo pais agregado en un lapso de 4 segundos
-function nuevoPais( pais, mostrar ) {       // pais: valor / mostrar: función
-    console .log( 'Ejecuta nuevoPais()' );
+// Creamos un Promise
+const esperando = new Promise( function ( resolve, reject ) {
+    // Simula tiempo que se puede tardar una REST API en leer unos 5000 registros por ejemplo
     setTimeout( function() {
-        paises .push( pais );
-        mostrar();                          // Hace referencia a la función que se pasa como parámetro mostrarPaises() en este caso
-    }, 4000 );      // 4seg
-}
+        resolve( 'Se ejecutó' );        // Debe usarse el then para indicarle que hacer
+    }, 5000 );      // 5seg
+});        
 
-// Función que muestra los paises en un lapso de tiempo de 2 seg
-function mostrarPaises() {
-    console .log( 'Ejecuta mostrarPaises()' );
-    // Simula traer los datos de un REST API
-    setTimeout( function() {
-        let html = '<ul>';      // Crea un "Template" vacío
+// Espera a que resolve se cumpla para ejecutar el código
+esperando .then( function( mensaje ) {
+    console .log( mensaje );
+});
 
-        /* Recorre el 'Array' de los países */
-        paises .forEach( function( pais ) {
-            html += `<li>${ pais }</li>`;    // Agrega los datos al Template
-        });
-
-        html += '</ul>';
-
-        // Agrega la plantilla con los datos al DOM
-        document .getElementById( 'app' ) .innerHTML = html;
-
-    }, 2000 );      // 2seg
-}
-
-// Ejecuta los llamados
-nuevoPais( 'Estados Unidos', mostrarPaises );  // Agregar nuevo país - Tarda 4 segundos (Pasa como parámetro la función mostrarPaises)
-mostrarPaises();                               // Mostrar los paises - Tarda 2 Segundos 
+// NOTA: El valor que estamos revisando no está disponible en el momento, pero la idea es que esté disponible en el futuro
