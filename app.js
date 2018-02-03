@@ -1,33 +1,27 @@
-/* Arrow Functions en JavaScript (Pasando Parámetros) */
+/* Callback con Arrow Functions en JavaScript */
+const productos = [ 'USB', 'Computadora', 'Pantalla', 'Teclado', 'Ratón' ];
 
-let aprendiendo;
+// Implementamos un CallBack Tracional     
+const cantidadLetrasProducto1 = productos .map( function( producto ) {
+    return producto .length;
+});      
 
-// --- FORMA TRADICIONAL ---
-// Pasar una función como variable
-aprendo1 = function( tecnologia ) {
-    console .log( 'aprendo1() ', 'Aprendiendo ' + tecnologia );
-}
-aprendo1( 'JavaScript' );
+// Implementamos un CallBack usando Arrow Functions
+const cantidadLetrasProducto2 = productos .map( ( producto ) => {
+    return producto .length;
+});      
 
-// --- FORMA NUEVA (Arrow Functions)
-// Pasar una función como variable 
-aprendo2 = ( tecnologia ) => {
-    console .log( 'aprendo2() ', 'Aprendiendo ' + tecnologia );
-}
-aprendo2( 'JavaScript' );
+// Implementamos un CallBack usando Arrow Functions sin parentesis
+const cantidadLetrasProducto3= productos .map( producto => {
+    return producto .length;
+});      
 
-// Pasar una función como variable 
-aprendo3 = ( tecnologia ) => console .log( 'aprendo3() ', 'Aprendiendo ' + tecnologia );
-aprendo3( 'JavaScript' );
+// Implementamos un CallBack en una línea usando Arrow Functions sin parentesis y retornando en automático
+const cantidadLetrasProducto4= productos .map( producto => producto .length );
 
-// Pasar una función como variable (retornando un valor)
-aprendo4 = ( tecnologia ) => 'Aprendiendo ' + tecnologia;
-console .log( 'aprendo4() ', aprendo4( 'JavaScript' ) );
-
-// Pasar una función como variable (retornando un objeto)
-aprendo5 = ( tecnologia ) => ( { aprendiendo: tecnologia } );
-console .log( 'aprendo5() ', aprendo5( 'JavaScript' ) );
-
-// NOTA: Cuando solo se pasa un parámetro se pueden obviar los paréntesis
-aprendo6 = tecnologia => ( { aprendiendo: tecnologia } );
-console .log( 'aprendo6() ', aprendo6( 'JavaScript' ) );
+console .group( 'Cantidad letras por producto' );
+    console .log( 'Callback Tradicional ', cantidadLetrasProducto1 );
+    console .log( 'Calback Arrow Functions (1) ', cantidadLetrasProducto2 );
+    console .log( 'Calback Arrow Functions (sin parentesis) ', cantidadLetrasProducto3 );
+    console .log( 'Calback Arrow Functions (sin parentesis y en una línea) ', cantidadLetrasProducto4 );
+console .groupEnd();
