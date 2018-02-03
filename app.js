@@ -1,38 +1,18 @@
-/* 'Async/Await' en JavaScript (ES7)
-     - Nos permite crear funciones que sean asíncronas, es decir que puedan ejecutarse junto a otras
-     - Como todo se ejecuta de forma asíncrona con 'await' le indicamos que cosas deben deternerse 
-       para ser ejecutadas hasta el final para luego continuar su ejecución
-     - Aún no está soportado en todos los navegadores
-     - Una función asíncrona siempre va a requerir un 'Promise'
-*/
+/* Consumiendo REST API con FetchAPI usando 'Async/Await' en JavaScript (ES7) */
 
-// Crea function asíncrona
-async function obtenerClientes() {
-    const clientes = new Promise( ( resolve, reject ) => {  // Crea un Promise (usando Arrow Functions)
-        // Simulamos la carga de datos desde un servidor
-        setTimeout( () => {                                 // Arrow Function
-            resolve( 'Clientes descargados...' );
-        }, 2000 );      // 2 seg
-    });
+// Crea función asíncrona (Lee las tareas)
+async function leerTODOs () {
+    // FetchAPI usando Promises
+    const respuesta = await fetch( 'https://jsonplaceholder.typicode.com/todos' );      // 'await' bloquea la ejecución hasta que se conecte a los datos
 
-    // Simula si hubo o no un ERROR
-    const error = false;                                    // Cambiar valor para simularlo
+    // Procede cuando la respuesta esté lista
+    const datos = await respuesta .json();                                              // 'await' bloquea la ejecución hasta que obtenga el 'Promise', luego se le indica que retorne los datos como JSON
 
-    if( !error ) {
-        // 'await' Detiene la ejecución hasta que se cumpla el Promise que se le indica en este caso 'clientes'
-        const respuesta = await clientes;     
-        
-        return respuesta;
-    }
-    else {
-        // 'reject' no esta disponible aquí. Sin embargo podemos hacer que el 'Promise' envie un mensaje para el 'reject'
-        await Promise .reject( 'Hubo un error...' );
-    }
+    return datos;
 }
 
-// Ejecutamos la función asíncrona
-obtenerClientes() 
-    .then( respuesta => console .log( 'OK: ', respuesta ) )     // 'respuesta' viene del 'resolve'
-    .catch( error => console .log( 'ERROR', error ) );          // 'error' ciene del 'reject' (Captura el ERROR)
+console .log( 'leerTODOs', leerTODOs() );       // Promise
 
-
+leerTODOs()
+    .then( datos => console .log( 'OK!', datos ) )
+    .catch( error => console .log( 'ERROR', error ) );
