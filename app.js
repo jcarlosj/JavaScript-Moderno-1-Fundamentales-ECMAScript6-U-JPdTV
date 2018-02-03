@@ -1,24 +1,29 @@
-/* Promises en JavaScript */
+/* Arrow Functions en JavaScript */
 
-// 'resolve' se ejecuta cuando la Promise se cumple (Parámetro 1)
-// 'reject' se ejecuta cuando la Promise NO se cumple (Parámetro 2)
+let aprendiendo;
 
-// Creamos un Promise
-const aplicarDescuento = new Promise( function( resolve, reject ) {
-    const descuento = false;    // [true/false] Para simular o no el error 
+// --- FORMA TRADICIONAL ---
+// Pasar una función como variable
+aprendo1 = function() {
+    console .log( 'aprendo1() ', 'Aprendiendo JavaScript' );
+}
+aprendo1();
 
-    if( descuento ) {
-        resolve( 'Descuento Aplicado' );
-    }
-    else {
-        reject( 'No se puede aplicar el descuento' );
-    }
+// --- FORMA NUEVA (Arrow Functions)
+// Pasar una función como variable 
+aprendo2 = () => {
+    console .log( 'aprendo2() ', 'Aprendiendo JavaScript' );
+}
+aprendo2();
 
-});
+// Pasar una función como variable 
+aprendo3 = () => console .log( 'aprendo3() ', 'Aprendiendo JavaScript' );
+aprendo3();
 
-/* Indicamos las acciones a realizar */
-aplicarDescuento .then( function( resultado ) {
-    console .log( 'CORRECTO', resultado );
-}). catch( function( error ) {
-    console .log( 'ERROR', error );
-});
+// Pasar una función como variable (retornando un valor)
+aprendo4 = () => 'Aprendiendo JavaScript';
+console .log( 'aprendo4() ', aprendo4() );
+
+// Pasar una función como variable (retornando un objeto)
+aprendo5 = () => ( { aprendiendo: 'Aprendiendo JavaScript' } );
+console .log( 'aprendo5() ', aprendo5() );
