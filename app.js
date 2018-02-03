@@ -1,27 +1,35 @@
-/* Callback con Arrow Functions en JavaScript */
+/* Función 'forEach' con Arrow Functions en JavaScript */
 const productos = [ 'USB', 'Computadora', 'Pantalla', 'Teclado', 'Ratón' ];
 
-// Implementamos un CallBack Tracional     
-const cantidadLetrasProducto1 = productos .map( function( producto ) {
-    return producto .length;
-});      
+/* --- FORMA TRADICIONAL --- */ 
 
-// Implementamos un CallBack usando Arrow Functions
-const cantidadLetrasProducto2 = productos .map( ( producto ) => {
-    return producto .length;
-});      
+// recorrer un 'Array' 
+console .group( 'forEach (Tradicional Functions)' );
+    productos .forEach( function( producto, index ) {
+        console .log( `${ index }. ${ producto }` );
+    });
+console .groupEnd();
 
-// Implementamos un CallBack usando Arrow Functions sin parentesis
-const cantidadLetrasProducto3= productos .map( producto => {
-    return producto .length;
-});      
+/* --- FORMA NUEVA --- */
 
-// Implementamos un CallBack en una línea usando Arrow Functions sin parentesis y retornando en automático
-const cantidadLetrasProducto4= productos .map( producto => producto .length );
+// usando ARROW FUNCTION para recorrer un 'Array' ---
+console .group( 'forEach (Arrow Functions)' );
+    productos .forEach( ( producto, index ) => {
+        console .log( `${ index }. ${ producto }` );
+    });
+console .groupEnd();
 
-console .group( 'Cantidad letras por producto' );
-    console .log( 'Callback Tradicional ', cantidadLetrasProducto1 );
-    console .log( 'Calback Arrow Functions (1) ', cantidadLetrasProducto2 );
-    console .log( 'Calback Arrow Functions (sin parentesis) ', cantidadLetrasProducto3 );
-    console .log( 'Calback Arrow Functions (sin parentesis y en una línea) ', cantidadLetrasProducto4 );
+// usando ARROW FUNCTION para recorrer un 'Array' sin paréntesis (debe tener solo un parámetro)---
+console .group( 'forEach (Arrow Functions sin paréntesis)' );
+    let i = 0;
+    productos .forEach( producto => {
+        console .log( `${ i }. ${ producto }` );
+        i++;
+    });
+console .groupEnd();
+
+// usando ARROW FUNCTION para recorrer un 'Array' en una sola línea ---
+console .group( 'forEach (Arrow Functions en una línea)' );
+    i = 0;
+    productos .forEach( producto => { console .log( `${ i }. ${ producto }` ); i++; } );
 console .groupEnd();
