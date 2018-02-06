@@ -2,15 +2,21 @@
  *  Sirve para extraer valores de un Objeto, de un Arreglo 
  */
 
-const ciudades = [ 'Santiago de Cali', 'Bogotá D.C.', 'Cartagena D.T.', 'Medellín', 'Manizales' ];
+const ciudades = [ 
+    'Londrés', 
+    'New York', 
+    'Montreal', 
+    'Sudáfrica', 
+    { 
+        idioma: 'Inglés' 
+    } 
+];
 
-// Extraer valores de un 'Array' usando Destructuring 
-const [ primeraCiudad, segundaCiudad ] = ciudades;
+console .log( ciudades );
 
-console .log( 'Primera Ciudad', primeraCiudad );
-console .log( 'Segunda Ciudad', segundaCiudad );
+// Extrae los valores del Objeto contenido en el 'Array'
+[ idioma ] = ciudades;
+console .log( 'Idioma', idioma );               // Londrés
 
-// Extraer el último valor del 'Array' usando Destructuring
-const [ , , , , capitalCaldas ] = ciudades;
-
-console .log( 'Quinta Ciudad', capitalCaldas );
+[ , , , , lenguaje ] = ciudades;
+console .log( 'Idioma', lenguaje .idioma );     // Inglés
