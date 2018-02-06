@@ -7,21 +7,14 @@ const cliente = {
     tipo: 'Premium'
 }
 
-console.log(cliente);
+// Reasigna valores a los atributos del Objeto cliente
+nombre = 'Pedro';
+tipo = 'Gold';
 
-// Extracción de datos tradicional
-let nombre_1 = cliente .nombre,
-    tipo_1 = cliente .tipo;
+// Esta notación permite que la extracción usando Destructuring busca los datos
+// originales del Objeto no los valores modificados en el Scope Global
+( { nombre, tipo } = cliente );   
 
-console .group( 'Extracción Tradicional' );
-    console .log( 'Nombre', nombre_1 );    
-    console .log( 'Tipo', tipo_1 );    
-console .groupEnd();
+console .log( 'Nombre', nombre );       // Alejandra
+console .log( 'Tipo', tipo );           // Premium
 
-// Extracción de datos usando Destructuring
-let { nombre, tipo } = cliente;       // Mapea los datos (por sus nombres, pues deben llamarse igual a los del Objeto) 
-
-console .group( 'Extracción usando Destructuring' );
-    console .log( 'Nombre', nombre );    
-    console .log( 'Tipo', tipo );    
-console .groupEnd();
