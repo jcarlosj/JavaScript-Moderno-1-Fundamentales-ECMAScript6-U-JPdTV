@@ -5,28 +5,11 @@
 const cliente = {
     nombre: 'Alejandro',
     apellido: 'Quina',
-    tipo: 'Premium',
-    datos: {
-        ubicacion: {
-            ciudad: 'Santiago de Cali',
-            pais: 'Colombia'
-        },
-        cuenta: {
-            desde: '10-12-2012',
-            saldo: 9000
-        }
-    }
 }
 
 // Extraer valores usando Destructuring
-let { datos: { ubicacion } } = cliente;     // Destructuring (Objetos que se encuentran dentro de otro Objeto)
+let { nombre, tipo = 'basico', saldo = 0 } = cliente;   // Valores por defecto
 
-console .log( 'Ubicación ', ubicacion );
-console .log( 'Pais ', ubicacion .pais );
-console .log( 'Ciudad ', ubicacion .ciudad );
-
-let { datos: { cuenta } } = cliente;        // Destructuring (Objetos que se encuentran dentro de otro Objeto)
-
-console .log( 'Cuenta ', cuenta );
-console .log( 'Desde ', cuenta .desde );
-console .log( 'Saldo ', cuenta .saldo );
+console .log( 'Nombre', nombre );
+console .log( 'Tipo', tipo );
+console .log( 'Saldo', saldo );
