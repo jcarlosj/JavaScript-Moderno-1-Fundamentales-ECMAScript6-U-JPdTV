@@ -1,35 +1,51 @@
-/* Destructuring a 'Functions' en JavaScript, método ES6 */
+/* Symbol en JavaScript (ES6) 
+ *  - Es un valor primitivo de JavaScript
+ *  - Un Symbol, agregado a un valor da una cierta propiedad privada y diferente en cada objeto
+ */
 
-// Crea función pasando un objeto con valores predeterminados
-function reservacion( completo, { metodoPago = 'efectivo', cantidad = 0, dias = 0 } = {} ) {
+// ---- EJEMPLO 1 ----
+// Crea un Symbol
+const simbolo1 = Symbol(),
+      simbolo2 = Symbol( 'Descripción del Símbolo aquí' );
 
-    console .log( 'Método: ', metodoPago );
-    console .log( 'Cantidad: ', cantidad );
-    console .log( 'Días: ', dias );  
+console .log( 'simbolo1', simbolo1 );
+console .log( 'Tipo: ', typeof simbolo1 );
 
-    if( completo ) {
-        console .log( 'Hacer la reserva' );
+console .log( 'simbolo2', simbolo2 );
+console .log( 'Tipo: ', typeof simbolo2 );
+
+console .log( 'simbolo1 === simbolo2', simbolo1 === simbolo2 );
+console .log( 'Symbol() === Symbol()', Symbol() === Symbol() );
+
+// ---- EJEMPLO 2 ----
+// Crea Symbols
+let nombre = Symbol(),
+    apellido = Symbol();
+
+// Crea Objeto Persona (vacío)
+let persona = {}
+
+console .log( 'Objeto Persona: ', persona );
+
+// Agregamos propiedades
+persona .nombre = 'Juan';               // Agrega propiedad 'nombre' al objeto 'persona'
+persona .apellido = 'Jiménez';          // Agrega propiedad 'apellido' al objeto 'persona'
+persona[ nombre ] = 'Elisa';            // Agrega el Symbol 'nombre' al objeto 'persona' (se deben usar corchetes[] )
+persona[ apellido ] = 'Giraldo';        // Agrega el Symbol 'apellido' al objeto 'persona' (se deben usar corchetes[] )
+persona .saldo = 1000;                  // Agrega propiedad 'saldo' al objeto 'persona'
+persona .tipoCliente = 'corriente';     // Agrega propiedad 'tipoCliente' al objeto 'persona'
+
+console .group( 'Objeto Persona' );
+    console .log( 'Objeto Persona: ', persona );
+
+    console .log( 'Nombre: ', persona .nombre );
+    console .log( 'Symbol (Nombre): ', persona [ nombre ] );
+
+    // Iterador FOR IN para iterar el objeto persona (No itera los Symbol)
+    for( let i in persona ) {
+        console .log( ` - ${ i }: ${ persona[ i ] }` );
     }
-    else {
-        console .log( 'Cancelar la reserva' );
-    }
-
-}
-
-// Llama reservación
-console .group( 'Primera reservación' );
-    reservacion( 
-        false,                           // [true/false] Si se realiza la reservación
-        {}                               // Objeto vacío 
-    ); 
 console .groupEnd();
 
-console .group( 'Segunda reservación' );
-    reservacion( 
-        true,                           // [true/false] Si se realiza la reservación
-        {                               // Objeto 
-            cantidad: 5000,
-            dias: 5
-        }                               
-    ); 
-console .groupEnd();
+// NOTA: Los Symbols no pueden ser iterados, solo se puede acceder a ellos usando corchetes y su nombre específico
+//       por eso se pueden considerar como valores "privados" del objeto
