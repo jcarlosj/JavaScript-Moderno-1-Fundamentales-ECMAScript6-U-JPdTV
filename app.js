@@ -1,33 +1,27 @@
-/* Destructuring 'Objects' y 'Arrays' en JavaScript (ES6) 
- *  Sirve para extraer valores de un Objeto, de un Arreglo 
- */
+/* Destructuring a 'Functions' en JavaScript, método tradicional (ES6) */
 
- const cliente = {
-     tipo: 'Platinium',
-     saldo: 9000,
-     datos: {
-         nombre: 'Juliana',
-         apellido: 'Puerta',
-         residencia: {
-            ciudad: 'Medellín',
-            pais: 'Colombia'
-         }
-     },
-     movimientos: [ '12-03-2018', '09-02-2017', '21-11-2016' ]
- }
+// Crea función
+function reservacion( completo, opciones ) {
+    opciones = opciones || {}; 
 
- // Extraer datos usando Destructuring 
-let {
-    tipo, 
-    datos,
-    datos: { residencia }, 
-    movimientos: [ , dos, tres ]
-} = cliente;
+    console .log( opciones );
 
-console .log( 'Tipo:', tipo );                   // Usa 'tipo'
-console .log( 'Nombre:', datos .nombre );        // Usa 'datos'
-console .log( 'Apellido:', datos .apellido );    // Usa 'datos'
-console .log( 'País:', residencia .pais );       // Usa 'datos: { residencia }'
-console .log( 'Ciudad:', residencia .ciudad );   // Usa 'datos: { residencia }'
-console .log( 'Movimiento 2:', dos );            // Usa 'movimientos: [ , dos, tres ]'
-console .log( 'Movimiento 3:', tres );           // Usa 'movimientos: [ , dos, tres ]'
+    // Mapear cada una de las variables (Destructuring método tradicional)
+    let metodo = opciones .metodoPago,
+        cantidad = opciones .cantidad,
+        dias = opciones .dias;
+
+    console .log( 'Método: ', metodo );
+    console .log( 'Cantidad: ', cantidad );
+    console .log( 'Días: ', dias );    
+}
+
+// Llama reservación
+reservacion( 
+    true,                           // [true/false] Si se realiza la reservación
+    {                               // Objeto
+        metodoPago: 'credito',
+        cantidad: 2000,
+        dias: 3
+    } 
+); 
