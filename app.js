@@ -7,6 +7,10 @@ const cliente = {
     apellido: 'Quina',
 }
 
+cliente .nombre = 'Melisa';
+cliente .apellido = 'Sanchez';
+cliente .saldo = 2500;
+
 // Extraer valores usando Destructuring
 let { nombre, tipo = 'basico', saldo = 0 } = cliente;   // Valores por defecto
 
