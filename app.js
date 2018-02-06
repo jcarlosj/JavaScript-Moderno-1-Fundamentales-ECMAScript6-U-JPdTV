@@ -1,17 +1,10 @@
-/* Destructuring a 'Functions' en JavaScript, método tradicional (ES6) */
+/* Destructuring a 'Functions' en JavaScript, método ES6 */
 
 // Crea función
 function reservacion( completo, opciones ) {
-    opciones = opciones || {}; 
+    let { metodoPago, cantidad, dias } = opciones;      // Destructuring Método Nuevo (ES6)
 
-    console .log( opciones );
-
-    // Mapear cada una de las variables (Destructuring método tradicional)
-    let metodo = opciones .metodoPago,
-        cantidad = opciones .cantidad,
-        dias = opciones .dias;
-
-    console .log( 'Método: ', metodo );
+    console .log( 'Método: ', metodoPago );
     console .log( 'Cantidad: ', cantidad );
     console .log( 'Días: ', dias );    
 }
