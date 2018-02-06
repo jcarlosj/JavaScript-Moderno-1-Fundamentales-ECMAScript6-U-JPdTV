@@ -1,19 +1,16 @@
-/* Destructuring objetos dentro de objetos (ES6) 
+/* Destructuring 'Arrays' en JavaScript (ES6) 
  *  Sirve para extraer valores de un Objeto, de un Arreglo 
  */
 
-const cliente = {
-    nombre: 'Alejandro',
-    apellido: 'Quina',
-}
+const ciudades = [ 'Santiago de Cali', 'Bogotá D.C.', 'Cartagena D.T.', 'Medellín', 'Manizales' ];
 
-cliente .nombre = 'Melisa';
-cliente .apellido = 'Sanchez';
-cliente .saldo = 2500;
+// Extraer valores de un 'Array' usando Destructuring 
+const [ primeraCiudad, segundaCiudad ] = ciudades;
 
-// Extraer valores usando Destructuring
-let { nombre, tipo = 'basico', saldo = 0 } = cliente;   // Valores por defecto
+console .log( 'Primera Ciudad', primeraCiudad );
+console .log( 'Segunda Ciudad', segundaCiudad );
 
-console .log( 'Nombre', nombre );
-console .log( 'Tipo', tipo );
-console .log( 'Saldo', saldo );
+// Extraer el último valor del 'Array' usando Destructuring
+const [ , , , , capitalCaldas ] = ciudades;
+
+console .log( 'Quinta Ciudad', capitalCaldas );
