@@ -1,20 +1,32 @@
-/* Destructuring (ES6) 
+/* Destructuring objetos dentro de objetos (ES6) 
  *  Sirve para extraer valores de un Objeto, de un Arreglo 
  */
 
 const cliente = {
-    nombre: 'Alejandra',
-    tipo: 'Premium'
+    nombre: 'Alejandro',
+    apellido: 'Quina',
+    tipo: 'Premium',
+    datos: {
+        ubicacion: {
+            ciudad: 'Santiago de Cali',
+            pais: 'Colombia'
+        },
+        cuenta: {
+            desde: '10-12-2012',
+            saldo: 9000
+        }
+    }
 }
 
-// Reasigna valores a los atributos del Objeto cliente
-nombre = 'Pedro';
-tipo = 'Gold';
+// Extraer valores usando Destructuring
+let { datos: { ubicacion } } = cliente;     // Destructuring (Objetos que se encuentran dentro de otro Objeto)
 
-// Esta notación permite que la extracción usando Destructuring busca los datos
-// originales del Objeto no los valores modificados en el Scope Global
-( { nombre, tipo } = cliente );   
+console .log( 'Ubicación ', ubicacion );
+console .log( 'Pais ', ubicacion .pais );
+console .log( 'Ciudad ', ubicacion .ciudad );
 
-console .log( 'Nombre', nombre );       // Alejandra
-console .log( 'Tipo', tipo );           // Premium
+let { datos: { cuenta } } = cliente;        // Destructuring (Objetos que se encuentran dentro de otro Objeto)
 
+console .log( 'Cuenta ', cuenta );
+console .log( 'Desde ', cuenta .desde );
+console .log( 'Saldo ', cuenta .saldo );
