@@ -6,59 +6,29 @@
  *  - Comparten muchos métodos con los Sets
  */
 
-// Instancia de un Map
-let cliente = new Map();
+// Instancia de un Map (parámetros por default)
+const paciente = new Map(
+    [ 
+        [ 'nombre', 'Fulanito de Tal' ],
+        [ 'apellido', 'Por cual' ],
+        [ 'habitacion', 'No definida' ] 
+    ]
+);
 
-console .log( 'cliente', cliente );
-console .log( 'tipo', typeof cliente );
-console .log( 'longitud', cliente .size );
-
-console .group( 'Agrega valores al Map' );
-    // Agregar elementos (llave, valor) al Map
-    cliente .set( 'nombre', 'Karen' );
-    cliente .set( 'apellido', 'González' );
-    cliente .set( 'tipoCuenta', 'Premium' );
-    cliente .set( 'saldo', 3000 );
-
-    console .log( 'cliente', cliente );
-    console .log( 'longitud', cliente .size );
-
-    // Acceder a los valores
-    console .log( 'Nombre: ' , cliente .get( 'nombre' ) );
-    console .log( 'Apellido: ' , cliente .get( 'apellido' ) );
-    console .log( 'Tipo cuenta: ' , cliente .get( 'tipoCuenta' ) );
-    console .log( 'Saldo: ' , cliente .get( 'saldo' ) );
+console .group( 'Valores por Default' );
+    console .log( 'paciente', paciente );
 console .groupEnd();
 
-console .group( 'Cambia los valores del Map' );
-    // Cambiar los valores
-    cliente .set( 'nombre', 'Maura' );
-    cliente .set( 'apellido', 'Villanueva' );
-
-    // Acceder a los valores
-    console .log( 'Nombre: ' , cliente .get( 'nombre' ) );
-    console .log( 'Apellido: ' , cliente .get( 'apellido' ) );
-    console .log( 'Tipo cuenta: ' , cliente .get( 'tipoCuenta' ) );
-    console .log( 'Saldo: ' , cliente .get( 'saldo' ) );
+// Agregamos valores al Map
+console .group( 'Define datos del paciente' );
+    paciente .set( 'nombre', 'Jenny' );
+    paciente .set( 'apellido', 'González' );
+    console .log( 'paciente', paciente );
 console .groupEnd();
 
-console .group( 'Métodos o propiedades de los Maps' );
-
-    // Iteración de un Map
-    console .group( 'Iteración de un Map' );
-        cliente .forEach( ( valor, index ) => {
-            console .log( ` - ${ index } : ${ valor }` );
-        });
-    console .groupEnd();
-
-    console .log( 'longitud ', cliente .size );                                     // Obtener la longitud de un Map
-    
-    console .log( 'cliente.has("tipoCuenta")', cliente .has( 'tipoCuenta' ) );     // Comprobar que un valor existe
-
-    cliente .delete( 'nombre' );
-    console .log( 'cliente.delete("nombre") ', cliente );                           // Eliminar un par clave valor
-
-    cliente .clear();
-    console .log( 'cliente.clear() ', cliente );                           // Eliminar todo el contenido del un Map
-
+// Iteramos o recorremos las datos del Map
+console .group( 'Recorre datos del Map (paciente)' );
+    paciente .forEach( ( valor, llave ) => {
+        console .log( ` - ${ llave } : ${ valor }` );
+    });
 console .groupEnd();
