@@ -1,44 +1,28 @@
-/* Iteradores en JavaScript (ES6) 
- * Estos iteradores a diferencia de los tradicionales ofrecen más flexibilidad
- * y control en la ejecución del código, permite el paso a paso
+/* Generadores en JavaScript (ES6) 
+ * - Es una función que va a retornar un Iterador
+ * - Debemos indicarle a JavaScript que la función en realidad es un
+ *   Generador anteponiendo al nombre de la misma un asterisco
+ * - Debe hacer uso de un 'yield' (Cualquier dato primitivo)
+ * - Se llaman como funciones normales, pero lo que retornan es un iterador
  */
 
-// Forma tradicional
-console .group( 'FOR iterador tradicional' );
-    for( let i = 0; i < 5; i++ ) {
-        console .log( i );
-    }
-console .groupEnd();
+ // Crea un Generador
+function *generador() {
+    // Yield
+    yield 1;
+    yield 'Ana Maria Fernández';
+    yield 3+6;
+    yield true;
 
-// Creación de un Iterador
-function crearIterador( carrito ) {
-    let i = 0;      // Inicializamos el indice
-
-    return {
-        siguiente: () => {
-            let fin = ( i >= carrito .length ),
-                valor = !fin ? carrito[ i++ ] : undefined;      // !fin : [true/false] Siempre que no haya llegado al final)
-
-            return {
-                fin : fin,
-                valor : valor
-            }    
-        }
-    }
 }
 
-// Crea Carrito
-const carrito = [ 'Falda' ,'Reloj' ,'Camiseta' ,'Pantalon' ,'Collar' ];
+const iterador = generador();       // Asigna el valor (generador retorna un iterador)
 
-// Implementa la iteración 
-const recorrerCarrito = crearIterador( carrito );
+console .log( 'iterador', iterador );
 
-// Recorre el carrito (Permite ir paso a paso)
-console .group( 'Iterador en JavaScript (Paso a paso)' );
-    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Falda" }
-    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Reloj" }
-    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Camiseta" }
-    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Pantalon" }
-    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Collar" }
-    console .log( recorrerCarrito .siguiente() );   // Object { fin: true, valor: undefined }
-console .groupEnd();
+// Iteración a través del generador
+console .log( 'iterador.next().value ', iterador .next() .value );      // 1
+console .log( 'iterador.next().value ', iterador .next() .value );      // 9
+console .log( 'iterador.next().value ', iterador .next() .value );      // 'Ana María Fernández'
+console .log( 'iterador.next().value ', iterador .next() .value );      // true
+console .log( 'iterador.next().value ', iterador .next() .value );      // undefined
