@@ -1,4 +1,4 @@
-/* Iteradores disponibles en JavaScript 'Values Iterator' (ES6) */
+/* Iteradores disponibles en JavaScript 'Keys Iterator' (ES6) */
 const ciudades = [ 'Bogotá', 'Cali', 'Medellín', 'Manizales', 'Cartagena' ],        // Declara un 'Array' con datos
       ordenes = new Set( [ 123, 231, 131, 102 ] )                                   // Declara un 'Set' con datos
       datos = new Map(                                                              // Declara un 'Map' con datos
@@ -14,25 +14,25 @@ console .group( 'Estructura de los datos' );
     console .log( datos ); 
 console .groupEnd();
 
-console .group( 'Values Iterator' );
+console .group( 'Keys Iterator' );
 
-    // Recorremos un 'Array' usando 'Values Iterator' (este ignora las llaves)
+    // Recorremos un 'Array' usando 'Keys Iterator' (Solo muestra las indices o llaves)
     console .group( 'Array "ciudades"' );
-    for( let ciudad of ciudades ) {             // No usamos 'values(), es iterador por defecto para los 'Arrays' y está implicito.
+    for( let ciudad of ciudades .keys() ) {             
         console .log( ciudad );               
     }
     console .groupEnd();
 
-    // Recorremos un 'Set' usando 'Values Iterator' (este ignora las llaves)
+    // Recorremos un 'Set' usando 'Keys Iterator' (Solo muestra las indices o llaves)
     console .group( 'Set "ordenes"' );
-    for( let orden of ordenes .values() ) {
+    for( let orden of ordenes .keys() ) {
         console .log( orden );                   
     }
     console .groupEnd();
 
-    // Recorremos un 'Map' usando 'Values Iterator' (este ignora las llaves)
+    // Recorremos un 'Map' usando 'Keys Iterator' (Solo muestra las indices o llaves)
     console .group( 'Map "datos"' );
-    for( let dato of datos .values() ) {
+    for( let dato of datos .keys() ) {
         console .log( dato );                   
     }
     console .groupEnd();
