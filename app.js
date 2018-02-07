@@ -1,4 +1,4 @@
-/* Iteradores disponibles en JavaScript 'Entries Iterator' (ES6) */
+/* Iteradores disponibles en JavaScript 'Values Iterator' (ES6) */
 const ciudades = [ 'Bogotá', 'Cali', 'Medellín', 'Manizales', 'Cartagena' ],        // Declara un 'Array' con datos
       ordenes = new Set( [ 123, 231, 131, 102 ] )                                   // Declara un 'Set' con datos
       datos = new Map(                                                              // Declara un 'Map' con datos
@@ -14,29 +14,26 @@ console .group( 'Estructura de los datos' );
     console .log( datos ); 
 console .groupEnd();
 
-console .group( 'Entries Iterator' );
+console .group( 'Values Iterator' );
 
-    // Recorremos un 'Array' usando 'Entries Iterator'
+    // Recorremos un 'Array' usando 'Values Iterator' (este ignora las llaves)
     console .group( 'Array "ciudades"' );
-    for( let ciudad of ciudades .entries() ) {
-        console .log( ciudad ); 
-        console .log( `[0] => ${ ciudad[ 0 ] }, [1] => ${ ciudad[ 1 ] }`);                 
+    for( let ciudad of ciudades ) {             // No usamos 'values(), es iterador por defecto para los 'Arrays' y está implicito.
+        console .log( ciudad );               
     }
     console .groupEnd();
 
-    // Recorremos un 'Set' usando 'Entries Iterator'
+    // Recorremos un 'Set' usando 'Values Iterator' (este ignora las llaves)
     console .group( 'Set "ordenes"' );
-    for( let orden of ordenes .entries() ) {
-        console .log( orden ); 
-        console .log( `[0] => ${ orden[ 0 ] }, [1] => ${ orden[ 1 ] }`);                   
+    for( let orden of ordenes .values() ) {
+        console .log( orden );                   
     }
     console .groupEnd();
 
-    // Recorremos un 'Map' usando 'Entries Iterator'
+    // Recorremos un 'Map' usando 'Values Iterator' (este ignora las llaves)
     console .group( 'Map "datos"' );
-    for( let dato of datos .entries() ) {
-        console .log( dato ); 
-        console .log( `[0] => ${ dato[ 0 ] }, [1] => ${ dato[ 1 ] }`);                   
+    for( let dato of datos .values() ) {
+        console .log( dato );                   
     }
     console .groupEnd();
 
