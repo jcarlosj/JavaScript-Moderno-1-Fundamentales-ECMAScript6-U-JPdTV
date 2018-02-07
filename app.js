@@ -1,58 +1,64 @@
-/* Sets en JavaScript (ES6) 
- *  - Es una lista ordenada de valores similar a un 'Array', Solo que NO
- *    va a permitir duplicados en su interior. Si algo va a ser duplicado 
- *    no se debe definir como set
- *  - Set es "case sensitive"
- *  - A diferencia de un 'Array' los 'Sets' no tienen indices.
- *    Por lo que la llave y el valor son el mismo
+/* Maps en JavaScript (ES6) 
+ *  - Es una lista ordenada de valores similar a un 'Array' 
+ *  - Tienen indices como los 'Arrays', por los que usan
+ *    llave y el valor.
+ *  - Pueden almacenar datos de cualquier tipo.
+ *  - Comparten muchos métodos con los Sets
  */
 
-// Instancia de un Set
-let carrito = new Set();
+// Instancia de un Map
+let cliente = new Map();
 
-console .group( 'Ejemplo 1' );
-    console .log( 'carrito: ', carrito );
-    console .log( 'tipo: ', typeof carrito );
-    console .log( 'longitud: ', carrito .size );
+console .log( 'cliente', cliente );
+console .log( 'tipo', typeof cliente );
+console .log( 'longitud', cliente .size );
 
-    // Se agregan 4 elementos
-    carrito .add( 'Camisa' );       
-    carrito .add( 'Zapatos' );      // Se repiten
-    carrito .add( 'Reloj' );
-    carrito .add( 'Zapatos' );      // Se repiten
+console .group( 'Agrega valores al Map' );
+    // Agregar elementos (llave, valor) al Map
+    cliente .set( 'nombre', 'Karen' );
+    cliente .set( 'apellido', 'González' );
+    cliente .set( 'tipoCuenta', 'Premium' );
+    cliente .set( 'saldo', 3000 );
 
-    console .log( 'carrito: ', carrito );
-    console .log( 'longitud: ', carrito .size );    // Se muestra un total de 3 elementos. Uno de ellos está repetido
+    console .log( 'cliente', cliente );
+    console .log( 'longitud', cliente .size );
+
+    // Acceder a los valores
+    console .log( 'Nombre: ' , cliente .get( 'nombre' ) );
+    console .log( 'Apellido: ' , cliente .get( 'apellido' ) );
+    console .log( 'Tipo cuenta: ' , cliente .get( 'tipoCuenta' ) );
+    console .log( 'Saldo: ' , cliente .get( 'saldo' ) );
 console .groupEnd();
 
-// Tambien se puede crear un Set pasandole datos como si fuera un 'Array'
-let numeros = new Set( [ 1, 3, 5, 7, 9, 3, 6, 9, 12 ] );
+console .group( 'Cambia los valores del Map' );
+    // Cambiar los valores
+    cliente .set( 'nombre', 'Maura' );
+    cliente .set( 'apellido', 'Villanueva' );
 
-console .group( 'Ejemplo 2' );
-    console .log( 'numeros: ', numeros );
-    console .log( 'tipo: ', typeof numeros );
-    console .log( 'longitud: ', numeros .size );    // 7 (Puesto que hay 2 valores repetidos)
+    // Acceder a los valores
+    console .log( 'Nombre: ' , cliente .get( 'nombre' ) );
+    console .log( 'Apellido: ' , cliente .get( 'apellido' ) );
+    console .log( 'Tipo cuenta: ' , cliente .get( 'tipoCuenta' ) );
+    console .log( 'Saldo: ' , cliente .get( 'saldo' ) );
 console .groupEnd();
 
-// Métodos o propiedades de los Sets
-console .group( 'Métodos o propiedades de los Sets' );
+console .group( 'Métodos o propiedades de los Maps' );
 
-    // Iteracción de Sets
-    console .group( 'Iteración de Sets' );
-        carrito .forEach( ( producto, index ) => {
-            console .log( `${ index } : ${ producto }` );
+    // Iteración de un Map
+    console .group( 'Iteración de un Map' );
+        cliente .forEach( ( valor, index ) => {
+            console .log( ` - ${ index } : ${ valor }` );
         });
     console .groupEnd();
 
-    // Convertir un 'Set' a un 'Array'
-    const arregloCarrito = [ ...carrito ];      // Convierte
-    console .log( 'Set a Array ' , arregloCarrito );
+    console .log( 'longitud ', cliente .size );                                     // Obtener la longitud de un Map
+    
+    console .log( 'cliente.has("tipoCuenta")', cliente .has( 'tipoCuenta' ) );     // Comprobar que un valor existe
 
-    console .log( 'carrito.has("Zapatos")', carrito .has( 'Reloj' ) );     // Comprueba que un elemento exista
+    cliente .delete( 'nombre' );
+    console .log( 'cliente.delete("nombre") ', cliente );                           // Eliminar un par clave valor
 
-    carrito .delete( 'Zapatos' );                                           // Elimina un elemento del Set
-    console .log( 'carrito.delete("Zapatos") ', carrito );
+    cliente .clear();
+    console .log( 'cliente.clear() ', cliente );                           // Eliminar todo el contenido del un Map
 
-    carrito .clear();                                     
-    console .log( 'carrito.clear() ', carrito );                            // Eliminar todos los elementos que contenga el Set    
 console .groupEnd();
