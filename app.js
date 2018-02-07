@@ -1,30 +1,43 @@
-/* Generadores en JavaScript (ES6) 
- * - Es una función que va a retornar un Iterador
- * - Debemos indicarle a JavaScript que la función en realidad es un
- *   Generador anteponiendo al nombre de la misma un asterisco
- * - Debe hacer uso de un 'yield' (Cualquier dato primitivo)
- * - Se llaman como funciones normales, pero lo que retornan es un iterador
- */
+/* Iteradores disponibles en JavaScript 'Entries Iterator' (ES6) */
+const ciudades = [ 'Bogotá', 'Cali', 'Medellín', 'Manizales', 'Cartagena' ],        // Declara un 'Array' con datos
+      ordenes = new Set( [ 123, 231, 131, 102 ] )                                   // Declara un 'Set' con datos
+      datos = new Map(                                                              // Declara un 'Map' con datos
+          [ 
+              [ 'nombre', 'Juan David' ],
+              [ 'apellidos', 'Herrera Ramírez' ],
+              [ 'profesion', 'Desarrollador Web' ]
+          ]
+      );
+console .group( 'Estructura de los datos' );
+    console .log( ciudades );      
+    console .log( ordenes );      
+    console .log( datos ); 
+console .groupEnd();
 
- // Crea un Generador
-function *nuevoGenerador( carrito ) {
-    for( let i = 0; i <= carrito .length; i++ )  {
-        yield carrito[ i ];    
+console .group( 'Entries Iterator' );
+
+    // Recorremos un 'Array' usando 'Entries Iterator'
+    console .group( 'Array "ciudades"' );
+    for( let ciudad of ciudades .entries() ) {
+        console .log( ciudad ); 
+        console .log( `[0] => ${ ciudad[ 0 ] }, [1] => ${ ciudad[ 1 ] }`);                 
     }
-}
+    console .groupEnd();
 
-// Crea un 'Array'
-const carrito = [ 'Cinturón', 'Cartera', 'Pañuelo', 'Camiseta', 'Pantalón' ];
+    // Recorremos un 'Set' usando 'Entries Iterator'
+    console .group( 'Set "ordenes"' );
+    for( let orden of ordenes .entries() ) {
+        console .log( orden ); 
+        console .log( `[0] => ${ orden[ 0 ] }, [1] => ${ orden[ 1 ] }`);                   
+    }
+    console .groupEnd();
 
-// Implementa el generador al 'Array'
-let iterador = nuevoGenerador( carrito );
+    // Recorremos un 'Map' usando 'Entries Iterator'
+    console .group( 'Map "datos"' );
+    for( let dato of datos .entries() ) {
+        console .log( dato ); 
+        console .log( `[0] => ${ dato[ 0 ] }, [1] => ${ dato[ 1 ] }`);                   
+    }
+    console .groupEnd();
 
-console .log( 'iterador', iterador );
-
-console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Cinturón", done: false }
-console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Cartera", done: false }
-console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Pañuelo", done: false }
-console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Camiseta", done: false }
-console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Pantalón", done: false }
-console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: undefined, done: false }
-
+console .groupEnd();
