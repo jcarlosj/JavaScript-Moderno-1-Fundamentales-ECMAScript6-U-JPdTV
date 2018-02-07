@@ -1,13 +1,7 @@
-/* Iteradores para un 'String' (ES6) */
+/* Iteradores en JavaScript: Obtener URL de un conjunto de enlaces (ES6) */
 
-// Forma tradicional
-const mensaje = 'Aprendiendo JavaScript Moderno';
+const enlaces = document .getElementsByTagName( 'a' );       // Obtenemos todos los enlaces
 
-for( let i = 0; i < mensaje .length; i++ ) {
-    console .log( mensaje[ i ] );
-}
-
-// Forma (ES6)
-for( let letra of mensaje ) {
-    console .log( letra );
+for( let enlace of enlaces ) {
+    console .log( enlace .href );                            // Obtiene la URL de cada uno de los enlaces 
 }
