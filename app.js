@@ -1,34 +1,44 @@
-/* Maps en JavaScript (ES6) 
- *  - Es una lista ordenada de valores similar a un 'Array' 
- *  - Tienen indices como los 'Arrays', por los que usan
- *    llave y el valor.
- *  - Pueden almacenar datos de cualquier tipo.
- *  - Comparten muchos métodos con los Sets
+/* Iteradores en JavaScript (ES6) 
+ * Estos iteradores a diferencia de los tradicionales ofrecen más flexibilidad
+ * y control en la ejecución del código, permite el paso a paso
  */
 
-// Instancia de un Map (parámetros por default)
-const paciente = new Map(
-    [ 
-        [ 'nombre', 'Fulanito de Tal' ],
-        [ 'apellido', 'Por cual' ],
-        [ 'habitacion', 'No definida' ] 
-    ]
-);
-
-console .group( 'Valores por Default' );
-    console .log( 'paciente', paciente );
+// Forma tradicional
+console .group( 'FOR iterador tradicional' );
+    for( let i = 0; i < 5; i++ ) {
+        console .log( i );
+    }
 console .groupEnd();
 
-// Agregamos valores al Map
-console .group( 'Define datos del paciente' );
-    paciente .set( 'nombre', 'Jenny' );
-    paciente .set( 'apellido', 'González' );
-    console .log( 'paciente', paciente );
-console .groupEnd();
+// Creación de un Iterador
+function crearIterador( carrito ) {
+    let i = 0;      // Inicializamos el indice
 
-// Iteramos o recorremos las datos del Map
-console .group( 'Recorre datos del Map (paciente)' );
-    paciente .forEach( ( valor, llave ) => {
-        console .log( ` - ${ llave } : ${ valor }` );
-    });
+    return {
+        siguiente: () => {
+            let fin = ( i >= carrito .length ),
+                valor = !fin ? carrito[ i++ ] : undefined;      // !fin : [true/false] Siempre que no haya llegado al final)
+
+            return {
+                fin : fin,
+                valor : valor
+            }    
+        }
+    }
+}
+
+// Crea Carrito
+const carrito = [ 'Falda' ,'Reloj' ,'Camiseta' ,'Pantalon' ,'Collar' ];
+
+// Implementa la iteración 
+const recorrerCarrito = crearIterador( carrito );
+
+// Recorre el carrito (Permite ir paso a paso)
+console .group( 'Iterador en JavaScript (Paso a paso)' );
+    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Falda" }
+    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Reloj" }
+    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Camiseta" }
+    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Pantalon" }
+    console .log( recorrerCarrito .siguiente() );   // Object { fin: false, valor: "Collar" }
+    console .log( recorrerCarrito .siguiente() );   // Object { fin: true, valor: undefined }
 console .groupEnd();
