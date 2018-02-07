@@ -1,51 +1,58 @@
-/* Symbol en JavaScript (ES6) 
- *  - Es un valor primitivo de JavaScript
- *  - Un Symbol, agregado a un valor da una cierta propiedad privada y diferente en cada objeto
+/* Sets en JavaScript (ES6) 
+ *  - Es una lista ordenada de valores similar a un 'Array', Solo que NO
+ *    va a permitir duplicados en su interior. Si algo va a ser duplicado 
+ *    no se debe definir como set
+ *  - Set es "case sensitive"
+ *  - A diferencia de un 'Array' los 'Sets' no tienen indices.
+ *    Por lo que la llave y el valor son el mismo
  */
 
-// ---- EJEMPLO 1 ----
-// Crea un Symbol
-const simbolo1 = Symbol(),
-      simbolo2 = Symbol( 'Descripción del Símbolo aquí' );
+// Instancia de un Set
+let carrito = new Set();
 
-console .log( 'simbolo1', simbolo1 );
-console .log( 'Tipo: ', typeof simbolo1 );
+console .group( 'Ejemplo 1' );
+    console .log( 'carrito: ', carrito );
+    console .log( 'tipo: ', typeof carrito );
+    console .log( 'longitud: ', carrito .size );
 
-console .log( 'simbolo2', simbolo2 );
-console .log( 'Tipo: ', typeof simbolo2 );
+    // Se agregan 4 elementos
+    carrito .add( 'Camisa' );       
+    carrito .add( 'Zapatos' );      // Se repiten
+    carrito .add( 'Reloj' );
+    carrito .add( 'Zapatos' );      // Se repiten
 
-console .log( 'simbolo1 === simbolo2', simbolo1 === simbolo2 );
-console .log( 'Symbol() === Symbol()', Symbol() === Symbol() );
-
-// ---- EJEMPLO 2 ----
-// Crea Symbols
-let nombre = Symbol(),
-    apellido = Symbol();
-
-// Crea Objeto Persona (vacío)
-let persona = {}
-
-console .log( 'Objeto Persona: ', persona );
-
-// Agregamos propiedades
-persona .nombre = 'Juan';               // Agrega propiedad 'nombre' al objeto 'persona'
-persona .apellido = 'Jiménez';          // Agrega propiedad 'apellido' al objeto 'persona'
-persona[ nombre ] = 'Elisa';            // Agrega el Symbol 'nombre' al objeto 'persona' (se deben usar corchetes[] )
-persona[ apellido ] = 'Giraldo';        // Agrega el Symbol 'apellido' al objeto 'persona' (se deben usar corchetes[] )
-persona .saldo = 1000;                  // Agrega propiedad 'saldo' al objeto 'persona'
-persona .tipoCliente = 'corriente';     // Agrega propiedad 'tipoCliente' al objeto 'persona'
-
-console .group( 'Objeto Persona' );
-    console .log( 'Objeto Persona: ', persona );
-
-    console .log( 'Nombre: ', persona .nombre );
-    console .log( 'Symbol (Nombre): ', persona [ nombre ] );
-
-    // Iterador FOR IN para iterar el objeto persona (No itera los Symbol)
-    for( let i in persona ) {
-        console .log( ` - ${ i }: ${ persona[ i ] }` );
-    }
+    console .log( 'carrito: ', carrito );
+    console .log( 'longitud: ', carrito .size );    // Se muestra un total de 3 elementos. Uno de ellos está repetido
 console .groupEnd();
 
-// NOTA: Los Symbols no pueden ser iterados, solo se puede acceder a ellos usando corchetes y su nombre específico
-//       por eso se pueden considerar como valores "privados" del objeto
+// Tambien se puede crear un Set pasandole datos como si fuera un 'Array'
+let numeros = new Set( [ 1, 3, 5, 7, 9, 3, 6, 9, 12 ] );
+
+console .group( 'Ejemplo 2' );
+    console .log( 'numeros: ', numeros );
+    console .log( 'tipo: ', typeof numeros );
+    console .log( 'longitud: ', numeros .size );    // 7 (Puesto que hay 2 valores repetidos)
+console .groupEnd();
+
+// Métodos o propiedades de los Sets
+console .group( 'Métodos o propiedades de los Sets' );
+
+    // Iteracción de Sets
+    console .group( 'Iteración de Sets' );
+        carrito .forEach( ( producto, index ) => {
+            console .log( `${ index } : ${ producto }` );
+        });
+    console .groupEnd();
+
+    // Convertir un 'Set' a un 'Array'
+    const arregloCarrito = [ ...carrito ];      // Convierte
+    console .log( 'Set a Array ' , arregloCarrito );
+
+    console .log( 'carrito.has("Zapatos")', carrito .has( 'Reloj' ) );     // Comprueba que un elemento exista
+
+    carrito .delete( 'Zapatos' );                                           // Elimina un elemento del Set
+    console .log( 'carrito.delete("Zapatos") ', carrito );
+
+    carrito .clear();                                     
+    console .log( 'carrito.clear() ', carrito );                            // Eliminar todos los elementos que contenga el Set    
+console .groupEnd();
