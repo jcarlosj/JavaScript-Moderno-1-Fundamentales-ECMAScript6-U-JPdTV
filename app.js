@@ -7,22 +7,24 @@
  */
 
  // Crea un Generador
-function *generador() {
-    // Yield
-    yield 1;
-    yield 'Ana Maria Fernández';
-    yield 3+6;
-    yield true;
-
+function *nuevoGenerador( carrito ) {
+    for( let i = 0; i <= carrito .length; i++ )  {
+        yield carrito[ i ];    
+    }
 }
 
-const iterador = generador();       // Asigna el valor (generador retorna un iterador)
+// Crea un 'Array'
+const carrito = [ 'Cinturón', 'Cartera', 'Pañuelo', 'Camiseta', 'Pantalón' ];
+
+// Implementa el generador al 'Array'
+let iterador = nuevoGenerador( carrito );
 
 console .log( 'iterador', iterador );
 
-// Iteración a través del generador
-console .log( 'iterador.next().value ', iterador .next() .value );      // 1
-console .log( 'iterador.next().value ', iterador .next() .value );      // 9
-console .log( 'iterador.next().value ', iterador .next() .value );      // 'Ana María Fernández'
-console .log( 'iterador.next().value ', iterador .next() .value );      // true
-console .log( 'iterador.next().value ', iterador .next() .value );      // undefined
+console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Cinturón", done: false }
+console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Cartera", done: false }
+console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Pañuelo", done: false }
+console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Camiseta", done: false }
+console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: "Pantalón", done: false }
+console .log( 'iterador.next().value', iterador .next() .value );    // Object { value: undefined, done: false }
+
