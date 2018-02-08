@@ -1,53 +1,45 @@
-/* Solo letras en Expresiones Regulares en JavaScript */
+/* Solo Correo Electrónico en Expresiones Regulares en JavaScript */
 
 // ---- EJEMPLOS ----- 
 let valor, 
     expresionRegular;
 
-console .group( 'Solo letras en Expresiones Regulares' );
+console .group( 'Solo correo electrónico en Expresiones Regulares' );
 
     // EJEMPLO 1:
-    console .group( 'Patrón letras mayúsculas' );
+    console .group( 'Patrón email' );
         
         // PRIMERO
-        valor = 'hola comunidad javascript';
-        expresionRegular = /([A-Z])\w+/;            // Solo mayúsculas             
+        valor = 'correo@correo.co';
+        expresionRegular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;            // Solo mayúsculas             
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
         // SEGUNDO
-        valor = 'HOLA COMUNIDAD JAVASCRIPT';
+        valor = 'www.correo.co';
+        expresionRegular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;            // Solo mayúsculas             
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
-    
+
         // TERCERO
-        valor = 'Hola Comunidad JavaScript';
+        valor = 'correo@correo.c';
+        expresionRegular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;            // Solo mayúsculas             
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
-    console .groupEnd();
-
-    // EJEMPLO 2:
-    console .group( 'Patrón letras minúsculas' );
-        
-        // PRIMERO
-        valor = 'hola comunidad javascript';
-        expresionRegular = /([a-z])\w+/;            // Solo mayúsculas             
+        // CUARTO
+        valor = 'correo@fulanito';
+        expresionRegular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;            // Solo mayúsculas             
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
-        // SEGUNDO
-        valor = 'HOLA COMUNIDAD JAVASCRIPT';
-
-        console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
-        console .log( 'Resultado: ', expresionRegular .test( valor ) );
-    
-        // TERCERO
-        valor = 'Hola Comunidad JavaScript';
+        // QUNTO
+        valor = 'correofulanito.sip';
+        expresionRegular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;            // Solo mayúsculas             
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
