@@ -1,44 +1,41 @@
-/* Letras o Números en Expresiones Regulares en JavaScript */
+/* Solo Números en Expresiones Regulares en JavaScript */
 
 // ---- EJEMPLOS ----- 
 let valor, 
     expresionRegular;
 
-console .group( 'Letras o Números en Expresiones Regulares' );
+console .group( 'Solo Números en Expresiones Regulares' );
 
     // EJEMPLO 1:
     console .group( 'Patrón fechas' );
         
         // PRIMERO
-        valor = '20-10-2018';
-        expresionRegular = /\w+/;                
+        valor = '1547856';
+        expresionRegular = /\d+/;                
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
         // SEGUNDO
-        valor = '1234';
-        expresionRegular = /\w+/;                
+        valor = 'Hola Mundo!';
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
         // TERCERO
-        valor = 'Hola saludos terricolas';
-        expresionRegular = /\w+/;                
+        valor = '1547856';
+        expresionRegular = /([0-9])\w/;                
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
         // CUARTO
-        valor = 'El 2018 el año para aprender JavaScript';
-        expresionRegular = /\w+/;                
+        valor = 'Aprendiendo JavaScript!';
+        expresionRegular = /([0-9])\w/;                
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
-        /* NOTA: \w : Evaluará que lo que tenga la expresión sea únicamente números o letras
-         * */
     console .groupEnd();
 
 console .groupEnd();
