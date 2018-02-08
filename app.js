@@ -1,37 +1,53 @@
-/* Solo Números en Expresiones Regulares en JavaScript */
+/* Solo letras en Expresiones Regulares en JavaScript */
 
 // ---- EJEMPLOS ----- 
 let valor, 
     expresionRegular;
 
-console .group( 'Solo Números en Expresiones Regulares' );
+console .group( 'Solo letras en Expresiones Regulares' );
 
     // EJEMPLO 1:
-    console .group( 'Patrón fechas' );
+    console .group( 'Patrón letras mayúsculas' );
         
         // PRIMERO
-        valor = '1547856';
-        expresionRegular = /\d+/;                
+        valor = 'hola comunidad javascript';
+        expresionRegular = /([A-Z])\w+/;            // Solo mayúsculas             
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
         // SEGUNDO
-        valor = 'Hola Mundo!';
+        valor = 'HOLA COMUNIDAD JAVASCRIPT';
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
-
+    
         // TERCERO
-        valor = '1547856';
-        expresionRegular = /([0-9])\w/;                
+        valor = 'Hola Comunidad JavaScript';
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
 
-        // CUARTO
-        valor = 'Aprendiendo JavaScript!';
-        expresionRegular = /([0-9])\w/;                
+    console .groupEnd();
+
+    // EJEMPLO 2:
+    console .group( 'Patrón letras minúsculas' );
+        
+        // PRIMERO
+        valor = 'hola comunidad javascript';
+        expresionRegular = /([a-z])\w+/;            // Solo mayúsculas             
+
+        console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
+        console .log( 'Resultado: ', expresionRegular .test( valor ) );
+
+        // SEGUNDO
+        valor = 'HOLA COMUNIDAD JAVASCRIPT';
+
+        console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
+        console .log( 'Resultado: ', expresionRegular .test( valor ) );
+    
+        // TERCERO
+        valor = 'Hola Comunidad JavaScript';
 
         console .log( `valor: ${ valor } \nexpresión: ${ expresionRegular }` );
         console .log( 'Resultado: ', expresionRegular .test( valor ) );
